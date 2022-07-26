@@ -1,5 +1,5 @@
 # Metabolomics-in-Alzheimers
-Metabolomics Data Science MSc project looking at data of Alzheimer's patients
+Metabolomics Data Science MSc project looking at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognative imparement (MCI) and cognative normal (CN) controls.
 ***
 ## Table of Contents
 1. [General Info](#general-info)
@@ -12,7 +12,7 @@ Metabolomics is a field of research which is new and fast growing. It looks at b
 
 The field is very data heavy and its newness makes it the perfect environment for innovation. It’s an ideal space for data science projects with a focus on social and/or public good.
 
-This project takes an existing dataset produced by the Mayo Clinic in 2013 and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
+This project takes an [existing dataset](https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046) consisting of 1909 metabolites and three groups (CN, MCI and AD) of 15 individuals, produced by the Mayo Clinic in [2013](https://pubmed.ncbi.nlm.nih.gov/23700429/) and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
 
 The significant metabolites were then compared against metabolites found significant by other literature to determine the reliability of metabolomics testing for this disease.
 ***
