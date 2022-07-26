@@ -1,9 +1,11 @@
 # Metabolomics-in-Alzheimers
-Metabolomics Data Science project looking at data of Alzheimer's patients
+Metabolomics Data Science MSc project looking at data of Alzheimer's patients
 ***
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
+3. [Methods](#methods)
+4. [References](#references)
 ***
 ## General Info
 Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
@@ -28,3 +30,14 @@ A list of technologies used within the project:
 * [NetworkX](https://networkx.org/documentation/stable/install.html): Version 2.5
 * [IPy](http://ipython.org/): Version 7.6.3
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
+***
+## Methods
+### Statistical Mehtods Used
+* [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
+* Principle Component Analysis (PCA)
+* Partial Least Squares - Discriminant Analysis (PLS-DA)
+***
+## References
+### Methods
+1. [Lee and Styczynski 2018 (NS-kNN)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/)
+### Literature
