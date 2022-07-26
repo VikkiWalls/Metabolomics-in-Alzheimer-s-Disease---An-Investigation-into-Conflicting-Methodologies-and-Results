@@ -57,7 +57,7 @@ Douaud, G., Groves, A.R., Tamnes, C.K., Westlye, L.T., Duff, E.P., Engvig, A., W
 
 He, Y., Yu, Z., Giegling, I., Xie, L., Hartmann, A.M., Prehn, C., Adamski, J., Kahn, R., Li, Y., Illig, T., Wang-Sattler, R. and Rujescu, D. (2012). [Schizophrenia shows a unique metabolomics signature in plasma](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3432190/pdf/tp201276a.pdf). Translational Psychiatry, [online] 2(8), pp.e149–e149. doi:10.1038/tp.2012.76.
 
-Human Metabolome Database. (2021). Human Metabolome Database: Showing metabocard for [Hypoxanthine (HMDB0000157)](https://hmdb.ca/metabolites/HMDB0000157). [online] Available at: https://hmdb.ca/metabolites/HMDB0000157 [Accessed 28 Jun. 2022].
+Human Metabolome Database. (2021). Human Metabolome Database: Showing metabocard for [Hypoxanthine (HMDB0000157)](https://hmdb.ca/metabolites/HMDB0000157). [online],[Accessed 28 Jun. 2022].
 
 Huo, Z., Yu, L., Yang, J., Zhu, Y., Bennett, D.A. and Zhao, J. (2020). [Brain and blood metabolome for Alzheimer’s dementia: findings from a targeted metabolomics analysis](https://pubmed.ncbi.nlm.nih.gov/31785839/). Neurobiology of Aging, [online] 86, pp.123–133. doi:10.1016/j.neurobiolaging.2019.10.014.
 
@@ -73,3 +73,16 @@ Petersen, R.C. (2004). [Mild cognitive impairment as a diagnostic entity](https:
 
 Proitsi, P., Kim, M., Whiley, L., Simmons, A., Sattlecker, M., Velayudhan, L., Lupton, M.K., Soininen, H., Kloszewska, I., Mecocci, P., Tsolaki, M., Vellas, B., Lovestone, S., Powell, J.F., Dobson, R.J.B. and Legido-Quigley, C. (2016). [Association of blood lipids with Alzheimer’s disease: A comprehensive lipidomics analysis](https://alz-journals.onlinelibrary.wiley.com/doi/10.1016/j.jalz.2016.08.003). Alzheimer’s & Dementia, [online] 13(2), pp.140–151. doi:http://dx.doi.org/10.1016/j.jalz.2016.08.003.
 
+Ribe, A.R., Laursen, T.M., Charles, M., Katon, W., Fenger-Grøn, M., Davydow, D.S., Chwastiak, L., Cerimele, J.M. and Vestergaard, M. (2015). [Long-term Risk of Dementia in Persons With Schizophrenia: A Danish Population-Based Cohort Study](https://www.researchgate.net/publication/282659507_Long-term_Risk_of_Dementia_in_Persons_With_Schizophrenia_A_Danish_Population-Based_Cohort_Study). JAMA Psychiatry, [online] 72(11), pp.1–7. doi:10.1001/jamapsychiatry.2015.1546.
+
+Rubin, E. (2016). [The Relationship Between Schizophrenia and Dementia](https://www.psychologytoday.com/us/blog/demystifying-psychiatry/201603/the-relationship-between-schizophrenia-and-dementia#:~:text=Many%20had%20clinical%20features%20seen%20in%20persons%20with) | Psychology Today. [online] www.psychologytoday.com.  [Accessed 24 May 2022].
+
+Schneider, L.S. and Sano, M. (2009). [Current Alzheimer’s disease clinical trials: Methods and placebo outcomes](https://www.sciencedirect.com/science/article/abs/pii/S1552526009021281). Alzheimer’s & Dementia, 5(5), pp.388–397. doi:10.1016/j.jalz.2009.07.038.
+
+Trushina, E., Dutta, T., Persson, X.-M.T., Mielke, M.M. and Petersen, R.C. (2013). [Identification of Altered Metabolic Pathways in Plasma and CSF in Mild Cognitive Impairment and Alzheimer’s Disease Using Metabolomics](https://pubmed.ncbi.nlm.nih.gov/23700429/). PLoS ONE, [online] 8(5), p.e63644. doi:10.1371/journal.pone.0063644.
+
+Wang, G., Zhou, Y., Huang, F.-J., Tang, H.-D., Xu, X.-H., Liu, J.-J., Wang, Y., Deng, Y.-L., Ren, R.-J., Xu, W., Ma, J.-F., Zhang, Y.-N., Zhao, A.-H., Chen, S.-D. and Jia, W. (2014). [Plasma Metabolite Profiles of Alzheimer’s Disease and Mild Cognitive Impairment](https://pubmed.ncbi.nlm.nih.gov/24694177/). Journal of Proteome Research, [online] 13(5), pp.2649–2658. doi:10.1021/pr5000895.
+
+White, K.E. and Cummings, J.L. (1996). [Schizophrenia and Alzheimer’s disease: Clinical and pathophysiologic analogies](https://www.sciencedirect.com/science/article/abs/pii/S0010440X96900358?via%3Dihub). Comprehensive Psychiatry, 37(3), pp.188–195. doi:10.1016/s0010-440x(96)90035-8.
+
+Yu, Z., Kastenmüller, G., He, Y., Belcredi, P., Möller, G., Prehn, C., Mendes, J., Wahl, S., Roemisch-Margl, W., Ceglarek, U., Polonikov, A., Dahmen, N., Prokisch, H., Xie, L., Li, Y., Wichmann, H.-E., Peters, A., Kronenberg, F., Suhre, K. and Adamski, J. (2011). [Differences between Human Plasma and Serum Metabolite Profiles](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0021230). PLoS ONE, [online] 6(7), p.e21230. doi:10.1371/journal.pone.0021230 163 Metabolites in Plasma (NB: Some authors the same as Schizophrenia Data source. Potentially questionable credibility given authors referenced themselves).
