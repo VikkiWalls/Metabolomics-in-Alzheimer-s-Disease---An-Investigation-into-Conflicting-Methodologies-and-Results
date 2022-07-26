@@ -39,5 +39,9 @@ A list of technologies used within the project:
 ***
 ## References
 ### Methods
-1. [Lee and Styczynski, M.P. (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data. Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
+[Boccard, J. and Rutledge, D.N. (2013)](https://www.sciencedirect.com/science/article/pii/S0003267013001700?via%3Dihub). A consensus orthogonal partial least squares discriminant analysis (OPLS-DA) strategy for multiblock Omics data fusion. Analytica Chimica Acta, [online] 769, pp.30–39. doi:10.1016/j.aca.2013.01.022.
+
+[Brereton, R.G. and Lloyd, G.R. (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Partial least squares discriminant analysis: taking the magic away. Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
+
+[Lee and Styczynski, M.P. (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data. Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
 ### Literature
