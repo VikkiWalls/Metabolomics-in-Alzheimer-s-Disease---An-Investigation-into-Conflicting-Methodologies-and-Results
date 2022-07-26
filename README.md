@@ -39,9 +39,15 @@ A list of technologies used within the project:
 ***
 ## References
 ### Methods
-[Boccard, J. and Rutledge, D.N. (2013)](https://www.sciencedirect.com/science/article/pii/S0003267013001700?via%3Dihub). A consensus orthogonal partial least squares discriminant analysis (OPLS-DA) strategy for multiblock Omics data fusion. Analytica Chimica Acta, [online] 769, pp.30–39. doi:10.1016/j.aca.2013.01.022.
+Boccard, J. and Rutledge, D.N. (2013). [A consensus orthogonal partial least squares discriminant analysis (OPLS-DA) strategy for multiblock Omics data fusion](https://www.sciencedirect.com/science/article/pii/S0003267013001700?via%3Dihub). Analytica Chimica Acta, [online] 769, pp.30–39. doi:10.1016/j.aca.2013.01.022.
 
-[Brereton, R.G. and Lloyd, G.R. (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Partial least squares discriminant analysis: taking the magic away. Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
+Brereton, R.G. and Lloyd, G.R. (2014). [Partial least squares discriminant analysis: taking the magic away](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
 
-[Lee and Styczynski, M.P. (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data. Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
+Lee and Styczynski, M.P. (2018). [NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
 ### Literature
+Cao, B., Wang, D., Pan, Z., Brietzke, E., McIntyre, R.S., Musial, N., Mansur, R.B., Subramanieapillai, M., Zeng, J., Huang, N. and Wang, J. (2019). [Characterizing acyl-carnitine biosignatures for schizophrenia: a longitudinal pre- and post-treatment study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6336814/). Translational Psychiatry, 9(1). doi:10.1038/s41398-018-0353-x.
+
+Clish, C.B. (2015).[ Metabolomics: an emerging but powerful tool for precision medicine](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4850886/). Cold Spring Harbor Molecular Case Studies, [online] 1(1). doi:10.1101/mcs.a000588.
+
+Cummings, J. (2017). [Lessons Learned from Alzheimer Disease: Clinical Trials with Negative Outcomes](https://ascpt.onlinelibrary.wiley.com/doi/full/10.1111/cts.12491). Clinical and Translational Science, [online] 11(2), pp.147–152. doi:10.1111/cts.12491.
+
