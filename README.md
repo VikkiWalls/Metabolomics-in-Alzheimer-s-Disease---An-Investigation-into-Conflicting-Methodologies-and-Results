@@ -39,5 +39,5 @@ A list of technologies used within the project:
 ***
 ## References
 ### Methods
-1. [Lee and Styczynski 2018 (NS-kNN)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/)
+1. [Lee and Styczynski, M.P. (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data. Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
 ### Literature
