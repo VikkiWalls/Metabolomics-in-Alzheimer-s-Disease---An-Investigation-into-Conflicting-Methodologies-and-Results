@@ -34,6 +34,7 @@ A list of technologies used within the project:
 ## Methods
 ### Statistical Mehtods Used
 * [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
+  * Used for imputation in dealing with missing values
 * Principle Component Analysis (PCA)
 * Partial Least Squares - Discriminant Analysis (PLS-DA)
 ***
