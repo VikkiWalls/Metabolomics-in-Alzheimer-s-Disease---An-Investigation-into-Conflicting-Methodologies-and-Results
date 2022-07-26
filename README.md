@@ -44,10 +44,32 @@ Boccard, J. and Rutledge, D.N. (2013). [A consensus orthogonal partial least squ
 Brereton, R.G. and Lloyd, G.R. (2014). [Partial least squares discriminant analysis: taking the magic away](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
 
 Lee and Styczynski, M.P. (2018). [NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
+
+Lee, M. and Hu, T. (2019). [Computational Methods for the Discovery of Metabolic Markers of Complex Traits. Metabolites](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6523328/), 9(4), p.66. doi:10.3390/metabo9040066.
 ### Literature
 Cao, B., Wang, D., Pan, Z., Brietzke, E., McIntyre, R.S., Musial, N., Mansur, R.B., Subramanieapillai, M., Zeng, J., Huang, N. and Wang, J. (2019). [Characterizing acyl-carnitine biosignatures for schizophrenia: a longitudinal pre- and post-treatment study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6336814/). Translational Psychiatry, 9(1). doi:10.1038/s41398-018-0353-x.
 
 Clish, C.B. (2015).[ Metabolomics: an emerging but powerful tool for precision medicine](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4850886/). Cold Spring Harbor Molecular Case Studies, [online] 1(1). doi:10.1101/mcs.a000588.
 
 Cummings, J. (2017). [Lessons Learned from Alzheimer Disease: Clinical Trials with Negative Outcomes](https://ascpt.onlinelibrary.wiley.com/doi/full/10.1111/cts.12491). Clinical and Translational Science, [online] 11(2), pp.147–152. doi:10.1111/cts.12491.
+
+Douaud, G., Groves, A.R., Tamnes, C.K., Westlye, L.T., Duff, E.P., Engvig, A., Walhovd, K.B., James, A., Gass, A., Monsch, A.U., Matthews, P.M., Fjell, A.M., Smith, S.M. and Johansen-Berg, H. (2014). [A common brain network links development, aging, and vulnerability to disease](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4267352/). Proceedings of the National Academy of Sciences, 111(49), pp.17648–17653. doi:10.1073/pnas.1410378111.
+
+He, Y., Yu, Z., Giegling, I., Xie, L., Hartmann, A.M., Prehn, C., Adamski, J., Kahn, R., Li, Y., Illig, T., Wang-Sattler, R. and Rujescu, D. (2012). [Schizophrenia shows a unique metabolomics signature in plasma](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3432190/pdf/tp201276a.pdf). Translational Psychiatry, [online] 2(8), pp.e149–e149. doi:10.1038/tp.2012.76.
+
+Human Metabolome Database. (2021). Human Metabolome Database: Showing metabocard for [Hypoxanthine (HMDB0000157)](https://hmdb.ca/metabolites/HMDB0000157). [online] Available at: https://hmdb.ca/metabolites/HMDB0000157 [Accessed 28 Jun. 2022].
+
+Huo, Z., Yu, L., Yang, J., Zhu, Y., Bennett, D.A. and Zhao, J. (2020). [Brain and blood metabolome for Alzheimer’s dementia: findings from a targeted metabolomics analysis](https://pubmed.ncbi.nlm.nih.gov/31785839/). Neurobiology of Aging, [online] 86, pp.123–133. doi:10.1016/j.neurobiolaging.2019.10.014.
+
+Illig, T., Gieger, C., Zhai, G., Römisch-Margl, W., Wang-Sattler, R., Prehn, C., Altmaier, E., Kastenmüller, G., Kato, B.S., Mewes, H.-W., Meitinger, T., de Angelis, M.H., Kronenberg, F., Soranzo, N., Wichmann, H.-E., Spector, T.D., Adamski, J. and Suhre, K. (2010). [A genome-wide perspective of genetic variation in human metabolism](https://www.nature.com/articles/ng.507). Nature Genetics, [online] 42(2), pp.137–141. doi:10.1038/ng.507 163 metabolites in plasma.
+
+Kaddurah-Daouk, R. (2006). [Metabolic Profiling of Patients with Schizophrenia](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1551921/). PLoS Medicine, [online] 3(8), p.e363. doi:10.1371/journal.pmed.0030363.
+
+Manchester, M. and Anand, A. (2017). Chapter Two - [Metabolomics: Strategies to Define the Role of Metabolism in Virus Infection and Pathogenesis](https://www.sciencedirect.com/science/article/abs/pii/S0065352717300015). Advances in Virus Research, [online] 98, pp.57–81.
+
+Mittelstrass, K., Ried, J.S., Yu, Z., Krumsiek, J., Gieger, C., Prehn, C., Roemisch-Margl, W., Polonikov, A., Peters, A., Theis, F.J., Meitinger, T., Kronenberg, F., Weidinger, S., Wichmann, H.E., Suhre, K., Wang-Sattler, R., Adamski, J. and Illig, T. (2011). Discovery of Sexual Dimorphisms in Metabolic and Genetic Biomarkers. PLoS Genetics, [online] 7(8), p.e1002215. doi:10.1371/journal.pgen.1002215 [Metabolite inclusion criteria for ‘Schizophrenia shows a unique metabolomics signature in plasma’](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002215#s4).
+
+Petersen, R.C. (2004). [Mild cognitive impairment as a diagnostic entity](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2796.2004.01388.x?sid=nlm%3Apubmed). Journal of Internal Medicine, [online] 256(3), pp.183–94. doi:10.1111/j.1365-2796.2004.01388.x.
+
+Proitsi, P., Kim, M., Whiley, L., Simmons, A., Sattlecker, M., Velayudhan, L., Lupton, M.K., Soininen, H., Kloszewska, I., Mecocci, P., Tsolaki, M., Vellas, B., Lovestone, S., Powell, J.F., Dobson, R.J.B. and Legido-Quigley, C. (2016). [Association of blood lipids with Alzheimer’s disease: A comprehensive lipidomics analysis](https://alz-journals.onlinelibrary.wiley.com/doi/10.1016/j.jalz.2016.08.003). Alzheimer’s & Dementia, [online] 13(2), pp.140–151. doi:http://dx.doi.org/10.1016/j.jalz.2016.08.003.
 
