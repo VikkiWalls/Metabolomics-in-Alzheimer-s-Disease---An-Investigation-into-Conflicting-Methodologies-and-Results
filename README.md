@@ -33,10 +33,15 @@ A list of technologies used within the project:
 ***
 ## Methods
 ### Statistical Mehtods Used
-* [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
+* #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
-* Principle Component Analysis (PCA)
-* Partial Least Squares - Discriminant Analysis (PLS-DA)
+  * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
+  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry
+* #### Principle Component Analysis (PCA)
+  * Finds the optimum number of components to explain the maximum variance in the data
+  * Useful for high dimensions of features (e.g. 1909 metabolites)
+  
+* #### Partial Least Squares - Discriminant Analysis (PLS-DA)
 ***
 ## References
 ### Methods
