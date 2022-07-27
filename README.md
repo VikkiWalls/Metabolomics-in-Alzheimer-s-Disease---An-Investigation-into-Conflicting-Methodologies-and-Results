@@ -3,9 +3,12 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
 ***
 ## Table of Contents
 1. [General Info](#general-info)
+    * [Aims](#aims)
+    * [Challenges](#challenges)
 2. [Technologies](#technologies)
 3. [Methods](#methods)
-4. [References](#references)
+4. [Results](#results)
+5. [References](#references)
 ***
 ## General Info
 Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
@@ -15,20 +18,24 @@ The field is very data heavy and its newness makes it the perfect environment fo
 This project takes an [existing dataset](https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046) consisting of 1909 metabolites and three groups (CN, MCI and AD) of 15 individuals, produced by the Mayo Clinic in [2013](https://pubmed.ncbi.nlm.nih.gov/23700429/) and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
 
 The significant metabolites were then compared against metabolites found significant by other literature to determine the reliability of metabolomics testing for this disease.
+
+### Aims
+
+### Challenges
 ***
 ## Technologies
 A list of technologies used within the project:
+* [IPy](http://ipython.org/): Version 7.6.3
 * [Jupyter Notebooks](https://www.anaconda.com/): Version 6.3.0
-* [Python](https://www.python.org/downloads/release/python-388/): Version 3.8.8
-* [pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html): Version 1.2.4
 * [matplotlib](https://matplotlib.org/stable/users/installing/index.html): Version 3.3.4
 * [missingno](https://github.com/ResidentMario/missingno): Version 0.4.2
-* [scikit learn](https://scikit-learn.org/stable/install.html): Version 0
+* [NetworkX](https://networkx.org/documentation/stable/install.html): Version 2.5
+* [pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html): Version 1.2.4
 * [plotly](https://plotly.com/python/getting-started/): Version 5.9
+* [Python](https://www.python.org/downloads/release/python-388/): Version 3.8.8
+* [scikit learn](https://scikit-learn.org/stable/install.html): Version 0
 * [seaborn](https://seaborn.pydata.org/installing.html): Version 0.11.1
 * [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.12.2
-* [NetworkX](https://networkx.org/documentation/stable/install.html): Version 2.5
-* [IPy](http://ipython.org/): Version 7.6.3
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
 ***
 ## Methods
@@ -37,6 +44,8 @@ A list of technologies used within the project:
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
   * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry
+* #### Variance Inflation Factor (VIF) Testing
+  * Used in conjunction with additional visualisation techniques mentioned below to test for multicollinearity
 * #### Principal Component Analysis (PCA)
   * Finds the optimum number of components to explain the maximum variance in the data
   * Useful for high dimensions of features (e.g., 1909 metabolites)
