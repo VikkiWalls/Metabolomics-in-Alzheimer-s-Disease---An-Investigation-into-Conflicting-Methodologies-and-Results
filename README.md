@@ -1,5 +1,5 @@
-# Metabolomics-in-Alzheimers
-Metabolomics Data Science MSc project looking at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognative imparement (MCI) and cognative normal (CN) controls.
+# Metabolomics in Alzheimer's Disease
+Metabolomics Data Science MSc project looking at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognitive impairment (MCI) and cognitive normal (CN) controls.
 ***
 ## Table of Contents
 1. [General Info](#general-info)
@@ -32,16 +32,25 @@ A list of technologies used within the project:
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
 ***
 ## Methods
-### Statistical Mehtods Used
+### Statistical Methods Used
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
   * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry
-* #### Principle Component Analysis (PCA)
+* #### Principal Component Analysis (PCA)
   * Finds the optimum number of components to explain the maximum variance in the data
-  * Useful for high dimensions of features (e.g. 1909 metabolites)
+  * Useful for high dimensions of features (e.g., 1909 metabolites)
   
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
+### Visualisation Techniques
+  * #### Multicollinearity
+    * Cluster Map (using Seaborn)
+    * Interactive Network Graph (using NetworkX)
+  * #### PCA
+    * Scatter Graph (using Yellowbrick) - colour coded by cognitive status
+    * Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
+  * #### PLS-DA
+  
 ***
 ## References
 ### Methods
