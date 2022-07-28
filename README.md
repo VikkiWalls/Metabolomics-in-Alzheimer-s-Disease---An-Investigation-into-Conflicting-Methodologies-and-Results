@@ -51,6 +51,7 @@ A list of technologies used within the project:
   * Useful for high dimensions of features (e.g., 1909 metabolites)
   
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
+* #### Logistic Regression
 ### Visualisation Techniques
   * #### Multicollinearity
     * Cluster Map (using Seaborn)
@@ -59,7 +60,18 @@ A list of technologies used within the project:
     * Scatter Graph (using Yellowbrick) - colour coded by cognitive status
     * Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
   * #### PLS-DA
-  
+  * #### Logistic Regression
+***
+## Results
+### Multicollinearity
+* #### Visualisation
+* #### VIF Test
+
+### PCA
+
+### PLS-DA
+
+### Logistic Regression
 ***
 ## References
 ### Methods
