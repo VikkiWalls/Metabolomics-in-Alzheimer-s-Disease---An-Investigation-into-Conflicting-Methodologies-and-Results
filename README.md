@@ -60,7 +60,7 @@ A list of technologies used within the project:
     * Scatter Graph (using Yellowbrick) - colour coded by cognitive status
     * Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
   * #### PLS-DA
-  * #### Logistic Regression
+
 ***
 ## Results
 ### Multicollinearity
@@ -71,6 +71,7 @@ A list of technologies used within the project:
 
 ### PLS-DA
 
+### Logistic Regression
 ***
 ## References
 ### Methods
