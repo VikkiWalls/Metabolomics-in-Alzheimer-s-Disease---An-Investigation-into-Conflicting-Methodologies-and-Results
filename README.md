@@ -71,7 +71,6 @@ A list of technologies used within the project:
 
 ### PLS-DA
 
-### Logistic Regression
 ***
 ## References
 ### Methods
