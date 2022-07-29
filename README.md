@@ -8,7 +8,7 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
 2. [Technologies](#technologies)
 3. [Methods](#methods)
 4. [Results](#results)
-5. [Additional Documents](#additional-documents)
+5. [List of Documents](#list-of-documents)
 6. [References](#references)
 ***
 ## General Info
@@ -82,8 +82,12 @@ A list of technologies used within the project:
 
 ### Logistic Regression
 ***
-## Additional Documents
-
+## List of Documents
+* Document 1 - README.md (this file)
+* Document 2 - Full project code
+* Document 3 - Aditional tables
+* Document 4 - Data
+* Document 5 - Write Up
 ***
 ## References
 ### Methods
