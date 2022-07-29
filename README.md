@@ -23,6 +23,7 @@ The significant metabolites were then compared against metabolites found signifi
 ### Aims
 
 ### Challenges
+One of the biggest challenges was the unbalanced dataset size, with far more metabolites than observations (individual samples). This caused interference in statistical analysis and is the suspected cause for the unusual results in the VIF test. 
 ***
 ## Technologies
 A list of technologies used within the project:
@@ -58,7 +59,7 @@ A list of technologies used within the project:
     * ##### Cluster Map (using Seaborn)
       * Can be difficult to interpret with large datasets such as metabolomics data
     * ##### Interactive Network Graph (using NetworkX)
-      * Adjustable correlation threshold (reccomended to be set at =< 0.9) allows direct comparisons between different levels
+      * Adjustable correlation threshold (reccomended to be set at 0.95) allows direct comparisons between different levels
       * Panning, zoom and selection tools make interpretation and manipulation accessable
       * Visualisation of direct relationships between correlated metabolites
       ###### Drawbacks
@@ -74,8 +75,17 @@ A list of technologies used within the project:
 ## Results
 ### Multicollinearity
 * #### Visualisation
+  * Clustermap displayed a clear clusters of highly positively correlated metabolites
+      * individual metabolites could not be identified due to large size of dataset
+  * Interactive network graph was able to visualise direct relationships between correlated metabolites
+     * e.g the direct relationship between C5H6N4O4S and AsnProLys
 * #### VIF Test
+  * Displayed infinity values for every metabolite, regardless of the specific programming method used
+      * normal techniques to reduce/remove this error (including log transforming the data, and removing the highest correlated values) did not change these results
+  * Did not appear to match up with the correlation values produced by the correlation matrix used by the visualisation methods above
 
+Whilst the VIF test appears to be inconclusive, between the VIF results and the visualisation techniques, it was clear that there were some levels of multicollinearity in this dataset. In order to undertake analysis methods such as logistic regression, this needed to be removed.
+To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were extracted from the correlation matrix that was used to build the visualisation techniques. These variables were then removed from the dataset before the rest of the analyses took place. A list of these highly correlated metabolite pairs and there are correlation values can be found in the additional tables document (document three).
 ### PCA
 
 ### PLS-DA
