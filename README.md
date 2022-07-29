@@ -7,9 +7,13 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
     * [Challenges](#challenges)
 2. [Technologies](#technologies)
 3. [Methods](#methods)
-4. [Results](#results)
-5. [List of Documents](#list-of-documents)
-6. [References](#references)
+    * [Statistical](#statistical-methods-used)
+    * [Visualisation](#visualisation-techniques)
+5. [Results](#results)
+6. [List of Documents](#list-of-documents)
+7. [References](#references)
+    * [Methodological](#methodological-sources)
+    * [Literature](#literature)
 ***
 ## General Info
 Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
@@ -100,7 +104,7 @@ To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were e
 * Document 5 - Write Up
 ***
 ## References
-### Methods
+### Methodological Sources
 Boccard, J. and Rutledge, D.N. (2013). [A consensus orthogonal partial least squares discriminant analysis (OPLS-DA) strategy for multiblock Omics data fusion](https://www.sciencedirect.com/science/article/pii/S0003267013001700?via%3Dihub). Analytica Chimica Acta, [online] 769, pp.30–39. doi:10.1016/j.aca.2013.01.022.
 
 Brereton, R.G. and Lloyd, G.R. (2014). [Partial least squares discriminant analysis: taking the magic away](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
