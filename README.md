@@ -8,7 +8,8 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
 2. [Technologies](#technologies)
 3. [Methods](#methods)
 4. [Results](#results)
-5. [References](#references)
+5. [Additional Documents](#additional-documents)
+6. [References](#references)
 ***
 ## General Info
 Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
@@ -54,11 +55,19 @@ A list of technologies used within the project:
 * #### Logistic Regression
 ### Visualisation Techniques
   * #### Multicollinearity
-    * Cluster Map (using Seaborn)
-    * Interactive Network Graph (using NetworkX)
+    * ##### Cluster Map (using Seaborn)
+      * Can be difficult to interpret with large datasets such as metabolomics data
+    * ##### Interactive Network Graph (using NetworkX)
+      * Adjustable correlation threshold (reccomended to be set at =< 0.9) allows direct comparisons between different levels
+      * Panning, zoom and selection tools make interpretation and manipulation accessable
+      * Visualisation of direct relationships between correlated metabolites
+      ###### Drawbacks
+      * Threshold slider must be moved once afer restarting kernal to produce a display
+      * Can still be difficult to interpret if high levels of multicollinearity exist and plot is zoomed out (making it difficult to use in academic write ups)
+      * Large metabolite names can create visual noise
   * #### PCA
-    * Scatter Graph (using Yellowbrick) - colour coded by cognitive status
-    * Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
+    * ##### Scatter Graph (using Yellowbrick) - colour coded by cognitive status
+    * ##### Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
   * #### PLS-DA
 
 ***
@@ -72,6 +81,9 @@ A list of technologies used within the project:
 ### PLS-DA
 
 ### Logistic Regression
+***
+## Additional Documents
+
 ***
 ## References
 ### Methods
