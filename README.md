@@ -27,7 +27,9 @@ The significant metabolites were then compared against metabolites found signifi
 ### Aims
 
 ### Challenges
-One of the biggest challenges was the unbalanced dataset size, with far more metabolites than observations (individual samples). This caused interference in statistical analysis and is the suspected cause for the unusual results in the VIF test. 
+One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognative type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD through out the exsisting literature.
+
+Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought it's own challenge as the code produced by Lee and Styczynski was in the Matlab Language and needed to be translated into Python before use.
 ***
 ## Technologies
 A list of technologies used within the project:
