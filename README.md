@@ -55,7 +55,7 @@ A list of technologies used within the project:
 * #### Principal Component Analysis (PCA)
   * Finds the optimum number of components to explain the maximum variance in the data
   * Useful for high dimensions of features (e.g., 1909 metabolites)
-  
+  * Useful for simplifying complex data when there are high levels of multicollinearity
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
 * #### Logistic Regression
 ### Visualisation Techniques
