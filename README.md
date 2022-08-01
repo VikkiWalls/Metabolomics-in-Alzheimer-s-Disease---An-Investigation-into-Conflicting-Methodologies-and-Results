@@ -111,7 +111,7 @@ To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were e
 
 ### PLS-DA
    * #### Alzheimer's Disease against Cognative Normal
-      * Initial visual comparison of components by cognative type suggested a lack of obvious outliers although there were a couple of clear differences in spike height (but these did not go outwith the range of the rest of the data
+      * Initial visual comparison of components by cognative type suggested a lack of obvious outliers although there were a couple of clear differences in spike height (but these did not go outwith the range of the rest of the data)
       * On plotting the PLS Regression scores there is visible seperation between AD and CN values on Latent Variable 1
    * #### Mild Cognative Imparement against Cognative Normal
       * Initial visual comparison of components by cognative type indicated some potential outliers in the CN data
