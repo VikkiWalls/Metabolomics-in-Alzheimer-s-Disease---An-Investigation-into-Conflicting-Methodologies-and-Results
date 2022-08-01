@@ -137,6 +137,8 @@ Brereton, R.G. and Lloyd, G.R. (2014). [Partial least squares discriminant analy
 Lee and Styczynski, M.P. (2018). [NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
 
 Lee, M. and Hu, T. (2019). [Computational Methods for the Discovery of Metabolic Markers of Complex Traits. Metabolites](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6523328/), 9(4), p.66. doi:10.3390/metabo9040066.
+
+Ruiz-Perez, D., Guan, H., Madhivanan, P., Mathee, K. and Narasimhan, G. (2020). [So you think you can PLS-DA?](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3310-7#:~:text=PLS-DA%20can%20be%20thought%20of%20as%20a%20%E2%80%9Csupervised%E2%80%9D,as%20for%20classification%20%5B%209%20%E2%80%93%2011%20%5D.) BMC Bioinformatics, [online] 21(S1). doi:10.1186/s12859-019-3310-7.
 ### Literature
 Cao, B., Wang, D., Pan, Z., Brietzke, E., McIntyre, R.S., Musial, N., Mansur, R.B., Subramanieapillai, M., Zeng, J., Huang, N. and Wang, J. (2019). [Characterizing acyl-carnitine biosignatures for schizophrenia: a longitudinal pre- and post-treatment study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6336814/). Translational Psychiatry, 9(1). doi:10.1038/s41398-018-0353-x.
 
