@@ -49,7 +49,7 @@ A list of technologies used within the project:
 [Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
 ***
 ## Methods
-### Statistical Methods Used
+### Statistical/Machine Learning Methods Used
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
@@ -60,6 +60,8 @@ A list of technologies used within the project:
   * Finds the optimum number of components to explain the maximum variance in the data
   * Useful for high dimensions of features (e.g., 1909 metabolites)
   * Useful for simplifying complex data when there are high levels of multicollinearity
+  
+    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the remaining tests and stored as a CSV.*
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
 * #### Logistic Regression
 ### Visualisation Techniques
@@ -76,7 +78,7 @@ A list of technologies used within the project:
       * Large metabolite names can create visual noise
   * #### PCA
     * ##### Scatter Graph (using Yellowbrick) - colour coded by cognitive status
-    * ##### Elbow Visualiser (using Yellowbrick) - using calinski harabasz score for KMeans Clustering
+    * ##### Elbow Visualiser (using matplotlib) - explained varience against principle components
   * #### PLS-DA
 
 ***
@@ -95,6 +97,11 @@ A list of technologies used within the project:
 Whilst the VIF test appears to be inconclusive, between the VIF results and the visualisation techniques, it was clear that there were some levels of multicollinearity in this dataset. In order to undertake analysis methods such as logistic regression, this needed to be removed.
 To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were extracted from the correlation matrix that was used to build the visualisation techniques. These variables were then removed from the dataset before the rest of the analyses took place. A list of these highly correlated metabolite pairs and there are correlation values can be found in the additional tables document (document three).
 ### PCA
+   * #### Visualisation
+      * Production of a scatter graph colour coded by cognative status revealed that data contained no specific clusters
+      * Elbow plot did not show a clear change to indicate a specifically optimal number of principle components
+   * Explained Variance Ratio indicated that the first 40 (out of a potential 45) components would explain 95% of the variance in the data
+      * The first 29 components would explain 80% of the variance
 
 ### PLS-DA
 
