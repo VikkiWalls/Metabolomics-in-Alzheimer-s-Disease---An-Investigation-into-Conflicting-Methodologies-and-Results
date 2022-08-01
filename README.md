@@ -57,12 +57,18 @@ A list of technologies used within the project:
 * #### Variance Inflation Factor (VIF) Testing
   * Used in conjunction with additional visualisation techniques mentioned below to test for multicollinearity
 * #### Principal Component Analysis (PCA)
+  * Unsupervised Machine Learning Method
   * Finds the optimum number of components to explain the maximum variance in the data
   * Useful for high dimensions of features (e.g., 1909 metabolites)
   * Useful for simplifying complex data when there are high levels of multicollinearity
   
-    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the remaining tests and stored as a CSV.*
+    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the remaining tests and stored as a csv file.*
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
+  * Supervised Machine Learning Method
+  * Used to determine whether known groups are actually different
+  * Used to determine which features best describe the differences between the known groups
+  ##### Drawbacks
+    * Can be detremental to use on it's own. See [Brereton and Lloyd (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/cem.2609?saml_referrer)
 * #### Logistic Regression
 ### Visualisation Techniques
   * #### Multicollinearity
@@ -104,7 +110,15 @@ To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were e
       * The first 29 components would explain 80% of the variance
 
 ### PLS-DA
-
+   * #### Alzheimer's Disease against Cognative Normal
+      * Initial visual comparison of components by cognative type suggested a lack of obvious outliers although there were a couple of clear differences in spike height (but these did not go outwith the range of the rest of the data
+      * On plotting the PLS Regression scores there is visible seperation between AD and CN values on Latent Variable 1
+   * #### Mild Cognative Imparement against Cognative Normal
+      * Initial visual comparison of components by cognative type indicated some potential outliers in the CN data
+      * On plotting the PLS Regression scores there is visible seperation between MCI and CN values on Latent Variable 1
+   * #### Alzheimer's Disease against Mild Cognative Imparement
+      * Initial visual comparison of components by cognative type indicated some potential outliers in the AD data
+      * On plotting the PLS Regression scores there is clear and significant visible seperation between AD and MCI values on Latent Variable 1
 ### Logistic Regression
 ***
 ## List of Documents
