@@ -45,6 +45,8 @@ A list of technologies used within the project:
 * [seaborn](https://seaborn.pydata.org/installing.html): Version 0.11.1
 * [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.12.2
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
+
+[Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
 ***
 ## Methods
 ### Statistical Methods Used
