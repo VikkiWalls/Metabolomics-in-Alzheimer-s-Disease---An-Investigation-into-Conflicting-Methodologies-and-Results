@@ -7,7 +7,7 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
     * [Challenges](#challenges)
 2. [Technologies](#technologies)
 3. [Methods](#methods)
-    * [Statistical](#statistical-methods-used)
+    * [Statistical and ML](#statistical-and-machine-learning-methods-used)
     * [Visualisation](#visualisation-techniques)
 5. [Results](#results)
 6. [List of Documents](#list-of-documents)
@@ -18,13 +18,15 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
 ## General Info
 Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
 
-The field is very data heavy and its newness makes it the perfect environment for innovation. It’s an ideal space for data science projects with a focus on social and/or public good.
+The field is very data heavy and its newness makes it the perfect environment for innovation. It’s an ideal space for data science projects with a focus on social/public good.
 
 This project takes an [existing dataset](https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046) consisting of 1909 metabolites and three groups (CN, MCI and AD) of 15 individuals, produced by the Mayo Clinic in [2013](https://pubmed.ncbi.nlm.nih.gov/23700429/) and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
 
-The significant metabolites were then compared against metabolites found significant by other literature to determine the reliability of metabolomics testing for this disease.
+In exsisting literature there is little in the way of overlap in results from study to study, and thus whilst AD has been covered a number of times in the short life of the field of Metabolomics, there is no defined list of metabolites which are significant to this disease and backed up over multiple studies. 
+In this paper, the significant metabolites were compared against metabolites found significant by other literature with the hope of prividing some clarity to the noise.
 
 ### Aims
+
 
 ### Challenges
 One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognative type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD through out the exsisting literature.
@@ -49,7 +51,7 @@ A list of technologies used within the project:
 [Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
 ***
 ## Methods
-### Statistical/Machine Learning Methods Used
+### Statistical and Machine Learning Methods Used
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
