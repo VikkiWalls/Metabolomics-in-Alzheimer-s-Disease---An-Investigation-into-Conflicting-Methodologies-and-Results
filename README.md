@@ -22,16 +22,16 @@ The field is very data heavy and its newness makes it the perfect environment fo
 
 This project takes an [existing dataset](https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046) consisting of 1909 metabolites and three groups (CN, MCI and AD) of 15 individuals, produced by the Mayo Clinic in [2013](https://pubmed.ncbi.nlm.nih.gov/23700429/) and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
 
-In exsisting literature there is little in the way of overlap in results from study to study, and thus whilst AD has been covered a number of times in the short life of the field of Metabolomics, there is no defined list of metabolites which are significant to this disease and backed up over multiple studies. 
-In this paper, the significant metabolites were compared against metabolites found significant by other literature with the hope of prividing some clarity to the noise.
+In existing literature there is little in the way of overlap in results from study to study, and thus whilst AD has been covered a number of times in the short life of the field of Metabolomics, there is no defined list of metabolites which are significant to this disease and backed up over multiple studies. 
+In this paper, the significant metabolites were compared against metabolites found significant by other literature with the hope of providing some clarity to the noise.
 
 ### Aims
-This study aims to find metabolites with a statistically significant influence on individuals with AD from the exsisting dataset and to compare these results with the metabolites named as significant in other studies. This is done in the hope to either provide clarity by aligning with exsisting results or to illustrate that a lack of agreed "good practice" techniques within the metabolomics field results in inconsistent and irreproducible results.
+This study aims to find metabolites with a statistically significant influence on individuals with AD from the existing dataset and to compare these results with the metabolites named as significant in other studies. This is done in the hope to either provide clarity by aligning with existing results or to illustrate that a lack of agreed "good practice" techniques within the metabolomics field results in inconsistent and irreproducible results.
 
 ### Challenges
-One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognative type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD through out the exsisting literature.
+One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognitive type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD throughout the existing literature.
 
-Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought it's own challenge as the code produced by Lee and Styczynski was in the Matlab Language and needed to be translated into Python before use.
+Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language and needed to be translated into Python before use.
 ***
 ## Technologies
 A list of technologies used within the project:
@@ -70,23 +70,23 @@ A list of technologies used within the project:
   * Used to determine whether known groups are actually different
   * Used to determine which features best describe the differences between the known groups
   ##### Drawbacks
-    * Can be detremental to use on it's own. See [Brereton and Lloyd (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/cem.2609?saml_referrer)
+    * Can be detrimental to use on its own. See [Brereton and Lloyd (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/cem.2609?saml_referrer)
 * #### Logistic Regression
 ### Visualisation Techniques
   * #### Multicollinearity
     * ##### Cluster Map (using Seaborn)
       * Can be difficult to interpret with large datasets such as metabolomics data
     * ##### Interactive Network Graph (using NetworkX)
-      * Adjustable correlation threshold (reccomended to be set at 0.95) allows direct comparisons between different levels
-      * Panning, zoom and selection tools make interpretation and manipulation accessable
+      * Adjustable correlation threshold (recommended to be set at 0.95) allows direct comparisons between different levels
+      * Panning, zoom and selection tools make interpretation and manipulation accessible
       * Visualisation of direct relationships between correlated metabolites
       ###### Drawbacks
-      * Threshold slider must be moved once afer restarting kernal to produce a display
+      * Threshold slider must be moved once after restarting kernel to produce a display
       * Can still be difficult to interpret if high levels of multicollinearity exist and plot is zoomed out (making it difficult to use in academic write ups)
       * Large metabolite names can create visual noise
   * #### PCA
     * ##### Scatter Graph (using Yellowbrick) - colour coded by cognitive status
-    * ##### Elbow Visualiser (using matplotlib) - explained varience against principle components
+    * ##### Elbow Visualiser (using matplotlib) - explained variance against principal components
   * #### PLS-DA
 
 ***
@@ -96,37 +96,37 @@ A list of technologies used within the project:
   * Clustermap displayed a clear clusters of highly positively correlated metabolites
       * individual metabolites could not be identified due to large size of dataset
   * Interactive network graph was able to visualise direct relationships between correlated metabolites
-     * e.g the direct relationship between C5H6N4O4S and AsnProLys
+     * e.g. the direct relationship between C5H6N4O4S and AsnProLys
 * #### VIF Test
   * Displayed infinity values for every metabolite, regardless of the specific programming method used
-      * normal techniques to reduce/remove this error (including log transforming the data, and removing the highest correlated values) did not change these results
+      * Normal techniques to reduce/remove this error (including log transforming the data, and removing the highest correlated values) did not change these results
   * Did not appear to match up with the correlation values produced by the correlation matrix used by the visualisation methods above
 
 Whilst the VIF test appears to be inconclusive, between the VIF results and the visualisation techniques, it was clear that there were some levels of multicollinearity in this dataset. In order to undertake analysis methods such as logistic regression, this needed to be removed.
-To do this, the highest correlated mmetabollite pairs (threshold of 0.95) were extracted from the correlation matrix that was used to build the visualisation techniques. These variables were then removed from the dataset before the rest of the analyses took place. A list of these highly correlated metabolite pairs and there are correlation values can be found in the additional tables document (document three).
+
 ### PCA
    * #### Visualisation
-      * Production of a scatter graph colour coded by cognative status revealed that data contained no specific clusters
+      * Production of a scatter graph colour coded by cognitive status revealed that data contained no specific clusters
       * Elbow plot did not show a clear change to indicate a specifically optimal number of principle components
    * Explained Variance Ratio indicated that the first 40 (out of a potential 45) components would explain 95% of the variance in the data
       * The first 29 components would explain 80% of the variance
 
 ### PLS-DA
-   * #### Alzheimer's Disease against Cognative Normal
-      * Initial visual comparison of components by cognative type suggested a lack of obvious outliers although there were a couple of clear differences in spike height (but these did not go outwith the range of the rest of the data)
-      * On plotting the PLS Regression scores there is visible seperation between AD and CN values on Latent Variable 1
-   * #### Mild Cognative Imparement against Cognative Normal
-      * Initial visual comparison of components by cognative type indicated some potential outliers in the CN data
-      * On plotting the PLS Regression scores there is visible seperation between MCI and CN values on Latent Variable 1
-   * #### Alzheimer's Disease against Mild Cognative Imparement
-      * Initial visual comparison of components by cognative type indicated some potential outliers in the AD data
-      * On plotting the PLS Regression scores there is clear and significant visible seperation between AD and MCI values on Latent Variable 1
+   * #### Alzheimer's Disease against Cognitive Normal
+      * Initial visual comparison of components by cognitive type suggested a lack of obvious outliers although there were a couple of clear differences in spike height (but these did not go out with the range of the rest of the data)
+      * On plotting the PLS Regression scores there is visible separation between AD and CN values on Latent Variable 1
+   * #### Mild Cognitive Impairment against Cognitive Normal
+      * Initial visual comparison of components by cognitive type indicated some potential outliers in the CN data
+      * On plotting the PLS Regression scores there is visible separation between MCI and CN values on Latent Variable 1
+   * #### Alzheimer's Disease against Mild Cognitive Impairment
+      * Initial visual comparison of components by cognitive type indicated some potential outliers in the AD data
+      * On plotting the PLS Regression scores there is clear and significant visible separation between AD and MCI values on Latent Variable 1
 ### Logistic Regression
 ***
 ## List of Documents
 * Document 1 - README.md (this file)
 * Document 2 - Full project code
-* Document 3 - Aditional tables
+* Document 3 - Additional tables
 * Document 4 - Data
 * Document 5 - Write Up
 ***
