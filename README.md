@@ -7,7 +7,7 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
     * [Challenges](#challenges)
 2. [Technologies](#technologies)
 3. [Methods](#methods)
-    * [Statistical and ML](#statistical-and-machine-learning-methods-used)
+    * [Statistical and ML](#statistical-and-machine-learning-methods)
     * [Visualisation](#visualisation-techniques)
 5. [Results](#results)
 6. [List of Documents](#list-of-documents)
@@ -51,7 +51,7 @@ A list of technologies used within the project:
 [Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
 ***
 ## Methods
-### Statistical and Machine Learning Methods Used
+### Statistical and Machine Learning Methods
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
