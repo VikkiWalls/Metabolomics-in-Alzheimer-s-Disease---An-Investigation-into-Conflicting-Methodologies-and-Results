@@ -26,7 +26,7 @@ In exsisting literature there is little in the way of overlap in results from st
 In this paper, the significant metabolites were compared against metabolites found significant by other literature with the hope of prividing some clarity to the noise.
 
 ### Aims
-
+This study aims to find metabolites with a statistically significant influence on individuals with AD from the exsisting dataset and to compare these results with the metabolites named as significant in other studies. This is done in the hope to either provide clarity by aligning with exsisting results or to illustrate that a lack of agreed "good practice" techniques within the metabolomics field results in inconsistent and irreproducible results.
 
 ### Challenges
 One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognative type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD through out the exsisting literature.
