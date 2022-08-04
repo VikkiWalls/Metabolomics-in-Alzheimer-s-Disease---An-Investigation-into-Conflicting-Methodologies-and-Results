@@ -75,7 +75,9 @@ A list of technologies used within the project:
   * Supervised Machine Learning method (borrowed from statistics)
   * One of the most common methods of analysis in metabolomics
   * Useful for prediction and classifiaction
-  * Builds a regression model to predict the probability that a given data entry belongs to the category numbered as “1”.
+  * Builds a regression model to predict the probability that a given data entry belongs to the category numbered as “1”
+  
+  Cross Validation was then used to assess accuracy and performance of the model.
   
 ### Visualisation Techniques
   * #### Multicollinearity
