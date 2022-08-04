@@ -72,6 +72,11 @@ A list of technologies used within the project:
   ##### Drawbacks
     * Can be detrimental to use on its own. See [Brereton and Lloyd (2014)](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/cem.2609?saml_referrer)
 * #### Logistic Regression
+  * Supervised Machine Learning method (borrowed from statistics)
+  * One of the most common methods of analysis in metabolomics
+  * Useful for prediction and classifiaction
+  * Builds a regression model to predict the probability that a given data entry belongs to the category numbered as “1”.
+  
 ### Visualisation Techniques
   * #### Multicollinearity
     * ##### Cluster Map (using Seaborn)
@@ -88,6 +93,9 @@ A list of technologies used within the project:
     * ##### Scatter Graph (using Yellowbrick) - colour coded by cognitive status
     * ##### Elbow Visualiser (using matplotlib) - explained variance against principal components
   * #### PLS-DA
+    * Visual comparison between AD and CN, MCI and CN and, AD and MCI
+    * Initial line plot using principal components to compare potential for outliers
+    * Scatter plot based on PLS regression scores to check for seperation between the profiles of each of the three groups
 
 ***
 ## Results
