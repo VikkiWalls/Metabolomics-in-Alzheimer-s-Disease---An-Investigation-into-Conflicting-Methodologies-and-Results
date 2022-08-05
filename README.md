@@ -31,12 +31,13 @@ This study aims to find metabolites with a statistically significant influence o
 ### Challenges
 One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognitive type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD throughout the existing literature.
 
-Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language and needed to be translated into Python before use.
+Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between python and matlab and back for analysis.
 ***
 ## Technologies
 A list of technologies used within the project:
 * [IPy](http://ipython.org/): Version 7.22.0
 * [Jupyter Notebooks](https://www.anaconda.com/): Version 6.3.0
+* [Matlab](https://uk.mathworks.com/products/get-matlab.html): Version R2022a
 * [matplotlib](https://matplotlib.org/stable/users/installing/index.html): Version 3.3.4
 * [missingno](https://github.com/ResidentMario/missingno): Version 0.4.2
 * [mpmath](https://mpmath.org/): Version 1.2.1
@@ -50,7 +51,6 @@ A list of technologies used within the project:
 * [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.13.2
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
 
-[Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
 ***
 ## Methods
 ### Statistical and Machine Learning Methods
