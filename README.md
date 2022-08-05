@@ -190,11 +190,15 @@ Boccard, J. and Rutledge, D.N. (2013). [A consensus orthogonal partial least squ
 
 Brereton, R.G. and Lloyd, G.R. (2014). [Partial least squares discriminant analysis: taking the magic away](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/cem.2609). Journal of Chemometrics, [online] 28(4), pp.213–225. doi:10.1002/cem.2609.
 
+[“Database Statistics: Metabolite Statistics.”](https://hmdb.ca/statistics) Human Metabolome Database, The Metabolomics Innovation Centre, hmdb.ca/statistics. Accessed 3 Aug. 2022. HMD Release 5.0 - January 2022.
+
 Lee and Styczynski, M.P. (2018). [NS-kNN: a modified k-nearest neighbors approach for imputing metabolomics data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/). Metabolomics, [online] 14(12), p.153. doi:10.1007/s11306-018-1451-8.
 
 Lee, M. and Hu, T. (2019). [Computational Methods for the Discovery of Metabolic Markers of Complex Traits. Metabolites](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6523328/), 9(4), p.66. doi:10.3390/metabo9040066.
 
 Ruiz-Perez, D., Guan, H., Madhivanan, P., Mathee, K. and Narasimhan, G. (2020). [So you think you can PLS-DA?](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3310-7#:~:text=PLS-DA%20can%20be%20thought%20of%20as%20a%20%E2%80%9Csupervised%E2%80%9D,as%20for%20classification%20%5B%209%20%E2%80%93%2011%20%5D.) BMC Bioinformatics, [online] 21(S1). doi:10.1186/s12859-019-3310-7.
+
+Schneider, Lon S., and Mary Sano. [“Current Alzheimer’s Disease Clinical Trials: Methods and Placebo Outcomes.”](https://www.sciencedirect.com/science/article/abs/pii/S1552526009021281) Alzheimer’s & Dementia, vol. 5, no. 5, Sept. 2009, pp. 388–397, 10.1016/j.jalz.2009.07.038. Accessed 23 May 2022.
 
 Szymańska, E., Saccenti, E., Smilde, A.K. and Westerhuis, J.A. (2011). [Double-check: validation of diagnostic statistics for PLS-DA models in metabolomics studies.](https://link.springer.com/article/10.1007/s11306-011-0330-3) Metabolomics, [online] 8(S1), pp.3–16. doi:10.1007/s11306-011-0330-3.
 ### Literature
@@ -220,6 +224,8 @@ Manchester, M. and Anand, A. (2017). Chapter Two - [Metabolomics: Strategies to 
 
 Mittelstrass, K., Ried, J.S., Yu, Z., Krumsiek, J., Gieger, C., Prehn, C., Roemisch-Margl, W., Polonikov, A., Peters, A., Theis, F.J., Meitinger, T., Kronenberg, F., Weidinger, S., Wichmann, H.E., Suhre, K., Wang-Sattler, R., Adamski, J. and Illig, T. (2011). Discovery of Sexual Dimorphisms in Metabolic and Genetic Biomarkers. PLoS Genetics, [online] 7(8), p.e1002215. doi:10.1371/journal.pgen.1002215 [Metabolite inclusion criteria for ‘Schizophrenia shows a unique metabolomics signature in plasma’](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1002215#s4).
 
+Oliver, Stephen G., et al. [“Systematic Functional Analysis of the Yeast Genome.”](https://www.cell.com/trends/biotechnology/fulltext/S0167-7799(98)01214-1?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0167779998012141%3Fshowall%3Dtrue) Trends in Biotechnology, vol. 16, no. 9, 1 Sept. 1998, pp. 373–378. Trends in Biotechnology, 10.1016/s0167-7799(98)01214-1. Accessed 3 Aug. 2022.
+
 Petersen, R.C. (2004). [Mild cognitive impairment as a diagnostic entity](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2796.2004.01388.x?sid=nlm%3Apubmed). Journal of Internal Medicine, [online] 256(3), pp.183–94. doi:10.1111/j.1365-2796.2004.01388.x.
 
 Proitsi, P., Kim, M., Whiley, L., Simmons, A., Sattlecker, M., Velayudhan, L., Lupton, M.K., Soininen, H., Kloszewska, I., Mecocci, P., Tsolaki, M., Vellas, B., Lovestone, S., Powell, J.F., Dobson, R.J.B. and Legido-Quigley, C. (2016). [Association of blood lipids with Alzheimer’s disease: A comprehensive lipidomics analysis](https://alz-journals.onlinelibrary.wiley.com/doi/10.1016/j.jalz.2016.08.003). Alzheimer’s & Dementia, [online] 13(2), pp.140–151. doi:http://dx.doi.org/10.1016/j.jalz.2016.08.003.
@@ -227,8 +233,6 @@ Proitsi, P., Kim, M., Whiley, L., Simmons, A., Sattlecker, M., Velayudhan, L., L
 Ribe, A.R., Laursen, T.M., Charles, M., Katon, W., Fenger-Grøn, M., Davydow, D.S., Chwastiak, L., Cerimele, J.M. and Vestergaard, M. (2015). [Long-term Risk of Dementia in Persons With Schizophrenia: A Danish Population-Based Cohort Study](https://www.researchgate.net/publication/282659507_Long-term_Risk_of_Dementia_in_Persons_With_Schizophrenia_A_Danish_Population-Based_Cohort_Study). JAMA Psychiatry, [online] 72(11), pp.1–7. doi:10.1001/jamapsychiatry.2015.1546.
 
 Rubin, E. (2016). [The Relationship Between Schizophrenia and Dementia](https://www.psychologytoday.com/us/blog/demystifying-psychiatry/201603/the-relationship-between-schizophrenia-and-dementia#:~:text=Many%20had%20clinical%20features%20seen%20in%20persons%20with) | Psychology Today. [online] www.psychologytoday.com.  [Accessed 24 May 2022].
-
-Schneider, L.S. and Sano, M. (2009). [Current Alzheimer’s disease clinical trials: Methods and placebo outcomes](https://www.sciencedirect.com/science/article/abs/pii/S1552526009021281). Alzheimer’s & Dementia, 5(5), pp.388–397. doi:10.1016/j.jalz.2009.07.038.
 
 Trushina, E., Dutta, T., Persson, X.-M.T., Mielke, M.M. and Petersen, R.C. (2013). [Identification of Altered Metabolic Pathways in Plasma and CSF in Mild Cognitive Impairment and Alzheimer’s Disease Using Metabolomics](https://pubmed.ncbi.nlm.nih.gov/23700429/). PLoS ONE, [online] 8(5), p.e63644. doi:10.1371/journal.pone.0063644.
 
