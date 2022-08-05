@@ -35,17 +35,19 @@ Other common issues in this field relate to a lack of consensus around best prac
 ***
 ## Technologies
 A list of technologies used within the project:
-* [IPy](http://ipython.org/): Version 7.6.3
+* [IPy](http://ipython.org/): Version 7.22.0
 * [Jupyter Notebooks](https://www.anaconda.com/): Version 6.3.0
 * [matplotlib](https://matplotlib.org/stable/users/installing/index.html): Version 3.3.4
 * [missingno](https://github.com/ResidentMario/missingno): Version 0.4.2
+* [mpmath](https://mpmath.org/): Version 1.2.1
 * [NetworkX](https://networkx.org/documentation/stable/install.html): Version 2.5
+* [numpy](https://pypi.org/project/numpy/): Version 1.20.1
 * [pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html): Version 1.2.4
-* [plotly](https://plotly.com/python/getting-started/): Version 5.9
+* [plotly](https://plotly.com/python/getting-started/): Version 5.9.0
 * [Python](https://www.python.org/downloads/release/python-388/): Version 3.8.8
-* [scikit learn](https://scikit-learn.org/stable/install.html): Version 0
+* [scikit learn](https://scikit-learn.org/stable/install.html): Version 1.1.1
 * [seaborn](https://seaborn.pydata.org/installing.html): Version 0.11.1
-* [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.12.2
+* [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.13.2
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
 
 [Matlab](https://uk.mathworks.com/products/get-matlab.html) was not directly used within the project however the language must be mentioned as Lee and Styczynski used it to write the original NS-kNN code.
@@ -132,6 +134,48 @@ Whilst the VIF test appears to be inconclusive, between the VIF results and the 
       * Initial visual comparison of components by cognitive type indicated some potential outliers in the AD data
       * On plotting the PLS Regression scores there is clear and significant visible separation between AD and MCI values on Latent Variable 1
 ### Logistic Regression
+ * #### Alzheimer's Disease against Cognitive Normal
+   * Pre Feature Selection:
+      * Cross Validation Mean Accuracy - 0.57
+      * Top 3 positive variables
+        * [p-Aminobenzoic acid](https://hmdb.ca/metabolites/HMDB0001392)
+        * [GPSer(16:0/20:0)](https://www.sciencedirect.com/topics/chemistry/glycerophosphoserine)
+        * [Lys Lys Met](https://pubchem.ncbi.nlm.nih.gov/compound/Lys-Lys-Met)
+      * Top 3 negative variables
+        * C6 H12 N6 O3 + 3.3999805
+        * C4 H9 Cl N2 O
+        * C6 H12 N6 O3
+   * Post Feature Selection:
+      * Cross Validation Mean Accuracy - 0.94
+      * Top 3 positive variables
+        * C29 H54 O3 S2
+        * p-Aminobenzoic acid
+        * [DIHYDROSPATHELIACHROMENE + 7.7589583](https://pubchem.ncbi.nlm.nih.gov/compound/609688)
+      * Top 3 negative variables
+        * Desmethyldeschlorobenzoyl Indomethacin
+        * [3-Hydroxycapric acid](https://hmdb.ca/metabolites/HMDB0002203)
+        * [Bis (2-hydroxypropyl) amine + 1.2051747](https://hmdb.ca/metabolites/HMDB0251354)
+   * #### Mild Cognitive Impairment against Cognitive Normal
+   * Pre Feature Selection:
+      * Cross Validation Mean Accuracy - 0.54
+      * Top 3 positive variables
+        * Lys Lys Met
+        * C26 H44 N22
+        * [2-Amino-3-methyl-1-butanol + 1.0206223](https://pubchem.ncbi.nlm.nih.gov/compound/2-Amino-3-methyl-1-butanol)
+      * Top 3 negative variables
+        * 
+        * 
+        * 
+   * Post Feature Selection:
+      * Cross Validation Mean Accuracy - 0.
+      * Top 3 positive variables
+        * 
+        * 
+        * 
+      * Top 3 negative variables
+        * 
+        * 
+        * 
 ***
 ## List of Documents
 * Document 1 - README.md (this file)
