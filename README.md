@@ -2,7 +2,7 @@
 Data Science MSc project within the Metabolomics research area.
 
 The project looks at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognitive impairment (MCI) and cognitive normal (CN) controls.
-It also compares results to exsisting literature which already lacks a consensus on ehich metabolites are significant to this disease.
+It also compares results to existing literature which already lacks a consensus on which metabolites are significant to this disease.
 ***
 ## Table of Contents
 1. [General Info](#general-info)
@@ -42,12 +42,12 @@ With only 15 individual samples per cognitive type there is a reasonable possibi
 
 Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. 
 This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. 
-This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between python and matlab and back for analysis.
+This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between Python and Matlab and back for analysis.
 
 According to the [Human Metabolome Database](https://hmdb.ca/statistics) there are a total of 253,245 metabolites in the human body, of this 3,444 have been detected and quantified and 20,924 have been detected but not quantified. 
 This leaves a massive proportion of metabolites which may potentially be significant to AD untested. 
 The dataset used in these analyses only contained 1,909 metabolites. 
-Until it is possible to test all 253,245 metabolites for any metabolomics study (i.e. including wider than AD research) there will always be a risk that results are not wholly relevant.
+Until it is possible to test all 253,245 metabolites for any metabolomics study (i.e., including wider than AD research) there will always be a risk that results are not wholly relevant.
 ***
 ## Technologies
 A list of technologies used within the project:
@@ -73,7 +73,7 @@ A list of technologies used within the project:
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
-  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry (i.e these values are MNAR)
+  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry (i.e., these values are MNAR)
 * #### Variance Inflation Factor (VIF) Testing
   * Used in conjunction with additional visualisation techniques mentioned below to test for multicollinearity
 * #### Principal Component Analysis (PCA)
@@ -82,7 +82,7 @@ A list of technologies used within the project:
   * Useful for high dimensions of features (e.g., 1909 metabolites)
   * Useful for simplifying complex data when there are high levels of multicollinearity
   
-    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the PLS-DA test and stored as a csv file.*
+    *A new dataframe was created using the principal components to explain 95% of the variance, and this dataframe was used in the PLS-DA test and stored as a csv file.*
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
   * Supervised Machine Learning Method
   * Used to determine whether known groups are actually different
@@ -92,7 +92,7 @@ A list of technologies used within the project:
 * #### Logistic Regression
   * Supervised Machine Learning method (borrowed from statistics)
   * One of the most common methods of analysis in metabolomics
-  * Useful for prediction and classifiaction
+  * Useful for prediction and classification
   * Builds a regression model to predict the probability that a given data entry belongs to the category numbered as “1”
   
   Cross Validation (CV) was then used to assess accuracy and performance of the model.
@@ -117,7 +117,7 @@ A list of technologies used within the project:
   * #### PLS-DA
     * Visual comparison between AD and CN, MCI and CN and, AD and MCI
     * Initial line plot using principal components to compare potential for outliers
-    * Scatter plot based on PLS regression scores to check for seperation between the profiles of each of the three groups
+    * Scatter plot based on PLS regression scores to check for separation between the profiles of each of the three groups
   * #### Logistic Regression
     * Bar chart showing the feature importance score of the top 50 variables (metabolites) for each model (AD vs CN and MCI vs CN)
 
@@ -126,9 +126,9 @@ A list of technologies used within the project:
 ### Multicollinearity
 * #### Visualisation
   * Clustermap displayed a clear clusters of highly positively correlated metabolites
-      * individual metabolites could not be identified due to large size of dataset
+      * Individual metabolites could not be identified due to large size of dataset
   * Interactive network graph was able to visualise direct relationships between correlated metabolites
-     * e.g. the direct relationship between C5H6N4O4S and AsnProLys
+     * e.g., the direct relationship between C5H6N4O4S and AsnProLys
 * #### VIF Test
   * Displayed infinity values for every metabolite, regardless of the specific programming method used
       * Normal techniques to reduce/remove this error (including log transforming the data, and removing the highest correlated values) did not change these results
