@@ -12,6 +12,7 @@ It also compares results to existing literature which already lacks a consensus 
 3. [Methods](#methods)
     * [Statistical and ML](#statistical-and-machine-learning-methods)
     * [Visualisation](#visualisation-techniques)
+    * [Notes](#notes)
 5. [Results](#results)
 6. [List of Documents](#list-of-documents)
 7. [References](#references)
@@ -42,7 +43,8 @@ With only 15 individual samples per cognitive type there is a reasonable possibi
 
 Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. 
 This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. 
-This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between Python and Matlab and back for analysis.
+This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language.
+Wilst efforts were made both to translate from Matlab into Python, and to export the data from Python into Matlab and back to run the function, none of these efforts worked and so this method, whilst clearly the better option than kNN, had to be disincluded from the final project.
 
 According to the [Human Metabolome Database](https://hmdb.ca/statistics) there are a total of 253,245 metabolites in the human body, of this 3,444 have been detected and quantified and 20,924 have been detected but not quantified. 
 This leaves a massive proportion of metabolites which may potentially be significant to AD untested. 
@@ -53,7 +55,6 @@ Until it is possible to test all 253,245 metabolites for any metabolomics study 
 A list of technologies used within the project:
 * [IPy](http://ipython.org/): Version 7.22.0
 * [Jupyter Notebooks](https://www.anaconda.com/): Version 6.3.0
-* [Matlab](https://uk.mathworks.com/products/get-matlab.html): Version R2022a
 * [matplotlib](https://matplotlib.org/stable/users/installing/index.html): Version 3.3.4
 * [missingno](https://github.com/ResidentMario/missingno): Version 0.4.2
 * [mpmath](https://mpmath.org/): Version 1.2.1
@@ -67,13 +68,10 @@ A list of technologies used within the project:
 * [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.13.2
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
 
+Whilst [Matlab](https://uk.mathworks.com/products/get-matlab.html) was not used in the final project, attempts to use the NS-kNN method (prior to it's disinclusion) used the Matlab Version R2022a.
 ***
 ## Methods
 ### Statistical and Machine Learning Methods
-* #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
-  * Used for imputation in dealing with missing values
-  * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
-  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry (i.e., these values are MNAR)
 * #### Variance Inflation Factor (VIF) Testing
   * Used in conjunction with additional visualisation techniques mentioned below to test for multicollinearity
 * #### Principal Component Analysis (PCA)
@@ -83,6 +81,7 @@ A list of technologies used within the project:
   * Useful for simplifying complex data when there are high levels of multicollinearity
   
     *A new dataframe was created using the principal components to explain 95% of the variance, and this dataframe was used in the PLS-DA test and stored as a csv file.*
+    
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
   * Supervised Machine Learning Method
   * Used to determine whether known groups are actually different
@@ -121,6 +120,12 @@ A list of technologies used within the project:
   * #### Logistic Regression
     * Bar chart showing the feature importance score of the top 50 variables (metabolites) for each model (AD vs CN and MCI vs CN)
 
+### Notes
+One method was attempted however was not included in the final project due to lack of functioning code:
+  * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
+    * Used for imputation in dealing with missing values
+    * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
+    * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry (i.e., these values are MNAR)
 ***
 ## Results
 ### Multicollinearity
