@@ -208,7 +208,6 @@ In order to undertake analysis methods such as logistic regression, this needed 
 * Document 2 - Full project code
 * Document 3 - Additional tables
 * Document 4 - Data
-* Document 5 - Write Up
 ***
 ## References
 ### Methodological Sources
