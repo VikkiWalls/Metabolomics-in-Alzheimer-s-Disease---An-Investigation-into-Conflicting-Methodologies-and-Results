@@ -1,5 +1,8 @@
 # Metabolomics in Alzheimer's Disease
-Metabolomics Data Science MSc project looking at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognitive impairment (MCI) and cognitive normal (CN) controls.
+Data Science MSc project within the Metabolomics research area.
+
+The project looks at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognitive impairment (MCI) and cognitive normal (CN) controls.
+It also compares results to exsisting literature which already lacks a consensus on ehich metabolites are significant to this disease.
 ***
 ## Table of Contents
 1. [General Info](#general-info)
@@ -16,9 +19,11 @@ Metabolomics Data Science MSc project looking at significant metabolites found i
     * [Literature](#literature)
 ***
 ## General Info
-Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). These compounds can be used to determine a person’s health status as well as what they are at risk of.
+Metabolomics is a field of research which is new and fast growing. It looks at biological compounds extracted from minimally invasive tissue and fluid samples such as blood plasma, urine and cerebral spinal fluid (CSF). 
+These compounds can be used to determine a person’s health status as well as what they are at risk of.
 
-The field is very data heavy and its newness makes it the perfect environment for innovation. It’s an ideal space for data science projects with a focus on social/public good.
+The field is very data heavy and its newness makes it the perfect environment for innovation. 
+It’s an ideal space for data science projects with a focus on social/public good.
 
 This project takes an [existing dataset](https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046) consisting of 1909 metabolites and three groups (CN, MCI and AD) of 15 individuals, produced by the Mayo Clinic in [2013](https://pubmed.ncbi.nlm.nih.gov/23700429/) and uses various statistical and machine learning methods to extract metabolites significant to Alzheimer’s disease (AD).
 
@@ -26,12 +31,23 @@ In existing literature there is little in the way of overlap in results from stu
 In this paper, the significant metabolites were compared against metabolites found significant by other literature with the hope of providing some clarity to the noise.
 
 ### Aims
-This study aims to find metabolites with a statistically significant influence on individuals with AD from the existing dataset and to compare these results with the metabolites named as significant in other studies. This is done in the hope to either provide clarity by aligning with existing results or to illustrate that a lack of agreed "good practice" techniques within the metabolomics field results in inconsistent and irreproducible results.
+This study aims to find metabolites with a statistically significant influence on individuals with AD from the existing dataset and to compare these results with the metabolites named as significant in other studies. 
+This is done in the hope to either provide clarity by aligning with existing results or to illustrate that a lack of agreed "good practice" techniques within the metabolomics field results in inconsistent and irreproducible results.
 
 ### Challenges
-One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. A related issue was the minimal numbers of sample sizes. With only 15 individual samples per cognitive type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD throughout the existing literature.
+One of the biggest challenges was related to the specific dimensions of the dataset, with far more metabolites than observations (individual samples). 
+This caused interference in initial attempts at statistical analysis and is the suspected cause for the unusual results in the VIF test. 
+A related issue was the minimal numbers of sample sizes. 
+With only 15 individual samples per cognitive type there is a reasonable possibility that any metabolites found to be significant may not occur in other datasets - this seems to be a common issue with the metabolomics field in general, and there certainly seems to be a lack of consensus in significant metabolites for AD throughout the existing literature.
 
-Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between python and matlab and back for analysis.
+Other common issues in this field relate to a lack of consensus around best practices in data analysis methods. 
+This is addressed by [Lee and Styczynski (2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6532628/) and was the given motivation behind the development of the No Skip k Nearest Neighbour (NS-kNN) method of imputation. 
+This in itself brought its own challenge as the code produced by Lee and Styczynski was in the Matlab Language meaning data had to be moved between python and matlab and back for analysis.
+
+According to the [Human Metabolome Database](https://hmdb.ca/statistics) there are a total of 253,245 metabolites in the human body, of this 3,444 have been detected and quantified and 20,924 have been detected but not quantified. 
+This leaves a massive proportion of metabolites which may potentially be significant to AD untested. 
+The dataset used in these analyses only contained 1,909 metabolites. 
+Until it is possible to test all 253,245 metabolites for any metabolomics study (i.e. including wider than AD research) there will always be a risk that results are not wholly relevant.
 ***
 ## Technologies
 A list of technologies used within the project:
@@ -46,7 +62,7 @@ A list of technologies used within the project:
 * [pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html): Version 1.2.4
 * [plotly](https://plotly.com/python/getting-started/): Version 5.9.0
 * [Python](https://www.python.org/downloads/release/python-388/): Version 3.8.8
-* [scikit learn](https://scikit-learn.org/stable/install.html): Version 1.1.1
+* [scikit learn (sklearn)](https://scikit-learn.org/stable/install.html): Version 1.1.1
 * [seaborn](https://seaborn.pydata.org/installing.html): Version 0.11.1
 * [statsmodels](https://www.statsmodels.org/dev/install.html): Version 0.13.2
 * [Yellowbrick](https://www.scikit-yb.org/en/latest/quickstart.html): Version 1.4
@@ -57,7 +73,7 @@ A list of technologies used within the project:
 * #### [No Skip k Nearest Neighbour (NS-kNN)](https://github.com/gtStyLab/NSkNN/blob/master/functions/NSkNNData_HM.m)
   * Used for imputation in dealing with missing values
   * Specifically designed to improve accuracy for values in data missing not at random (MNAR)
-  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry
+  * Particularly useful for metabolite data where missing values can be due to Limit of Detection (LOD) levels in mass spectrometry (i.e these values are MNAR)
 * #### Variance Inflation Factor (VIF) Testing
   * Used in conjunction with additional visualisation techniques mentioned below to test for multicollinearity
 * #### Principal Component Analysis (PCA)
@@ -66,7 +82,7 @@ A list of technologies used within the project:
   * Useful for high dimensions of features (e.g., 1909 metabolites)
   * Useful for simplifying complex data when there are high levels of multicollinearity
   
-    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the remaining tests and stored as a csv file.*
+    *A new dataframe was created using the principle components to explain 95% of the variance, and this dataframe was used in the PLS-DA test and stored as a csv file.*
 * #### Partial Least Squares - Discriminant Analysis (PLS-DA)
   * Supervised Machine Learning Method
   * Used to determine whether known groups are actually different
@@ -79,7 +95,9 @@ A list of technologies used within the project:
   * Useful for prediction and classifiaction
   * Builds a regression model to predict the probability that a given data entry belongs to the category numbered as “1”
   
-  Cross Validation was then used to assess accuracy and performance of the model.
+  Cross Validation (CV) was then used to assess accuracy and performance of the model.
+  
+  Feature selection by using the feature importances property of the sklearn.ensemble extra trees classifier was then used to build a second logistic regression model, which was again accuracy tested using CV.
   
 ### Visualisation Techniques
   * #### Multicollinearity
@@ -100,6 +118,8 @@ A list of technologies used within the project:
     * Visual comparison between AD and CN, MCI and CN and, AD and MCI
     * Initial line plot using principal components to compare potential for outliers
     * Scatter plot based on PLS regression scores to check for seperation between the profiles of each of the three groups
+  * #### Logistic Regression
+    * Bar chart showing the feature importance score of the top 50 variables (metabolites) for each model (AD vs CN and MCI vs CN)
 
 ***
 ## Results
@@ -114,7 +134,8 @@ A list of technologies used within the project:
       * Normal techniques to reduce/remove this error (including log transforming the data, and removing the highest correlated values) did not change these results
   * Did not appear to match up with the correlation values produced by the correlation matrix used by the visualisation methods above
 
-Whilst the VIF test appears to be inconclusive, between the VIF results and the visualisation techniques, it was clear that there were some levels of multicollinearity in this dataset. In order to undertake analysis methods such as logistic regression, this needed to be removed.
+Whilst the VIF test appears to be inconclusive, between the VIF results and the visualisation techniques, it was clear that there were some levels of multicollinearity in this dataset. 
+In order to undertake analysis methods such as logistic regression, this needed to be removed.
 
 ### PCA
    * #### Visualisation
