@@ -1,4 +1,4 @@
-# Metabolomics in Alzheimer's Disease
+# Metabolomics in Alzheimer's Disease - An Investigation into Conflicting Methodologies and Results
 Data Science MSc project within the Metabolomics research area.
 
 The project looks at significant metabolites found in Alzheimer's Disease (AD) patients in comparison to patients with mild cognitive impairment (MCI) and cognitive normal (CN) controls.
