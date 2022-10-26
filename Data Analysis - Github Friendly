@@ -540,9 +540,8 @@ y2 = np.array(y2, dtype=int)
 y2
 
 ##### Apply fitting a PLS-DA model to the data
-from sklearn.cross_decomposition import PLSRegression
-plsr = PLSRegression(n_components=2, scale=False)
-plsr.fit(MCIvsCN.values.T, y)
+plsr2 = PLSRegression(n_components=2, scale=False)
+plsr2.fit(MCIvsCN.values.T, y2)
 
 ##### Viewing the model scores and building a dataframe to be used for plotting
 plsr2.x_scores_;
@@ -639,4 +638,140 @@ for n, (x, y) in enumerate(scores3.values):
     label = score3lab.values[n][0]
     ax.text(x,y,label)
 _There appears to be significant separation between MCI and AD values on Latent Variable 1_
+
+### Logistic Regression
+#### AD vs CN
+##### Creating a dataframe of only AD and CN Values
+_1 values relate to AD and 0 values relate to CN_
+AD_log = AlzZ.iloc[0:15,:]
+AD_log.eval("Cog_Status = Cog_Status + 1", inplace=True)
+AD_log;
+CN_log = AlzZ.iloc[15:30,:]
+CN_log.eval("Cog_Status = Cog_Status - 1", inplace=True)
+CN_log;
+ADvsCN_log = pd.concat([AD_log, CN_log])
+ADvsCN_log
+
+##### Creating a features array
+X1 = ADvsCN_log.iloc[:,1:]
+X1;
+
+##### Creating an output array
+Y1 = ADvsCN_log.iloc[:,0]
+Y1;
+
+##### Splitting the data
+X_train1, X_test1, Y_train1, Y_test1 = train_test_split(X1, Y1, random_state=0)
+
+##### Building the classifier
+logclassifier1 = LogisticRegression(solver='lbfgs',random_state=0)
+logclassifier1.fit(X_train1, Y_train1)
+
+##### Testing the classifier
+predicted_y1 = logclassifier1.predict(X_test1)
+predicted_y1
+
+##### Testing the accuracy of the classifier
+print('Accuracy: {:.2f}'.format(logclassifier1.score(X_test1, Y_test1)))
+
+##### Cross Validation testing
+scores_log1 = cross_val_score(logclassifier1, X1, Y1, cv=10)
+print('Cross-Validation Accuracy Scores', scores)
+scores_log1 = pd.Series(scores_log1)
+scores_log1.min(), scores_log1.mean(), scores_log1.max()
+_Range of accuracy is between 0.34 and 1.0 but averaging on 0.57_
+
+##### Extracting coefficients of specific metabolites
+##### Create a list of original variable names from the training DataFrame
+original_variables1 = X1.columns
+
+###### Extract the coefficients of the logistic regression estimator
+model_coefficients1 = logclassifier1.coef_[0]
+
+###### Create a dataframe of the variables and coefficients & print it out
+coefficient_df1 = pd.DataFrame({"Metabolite" : original_variables1, "Coefficient": model_coefficients1})
+print(coefficient_df1)
+
+###### Print out the top 3 positive variables
+top_three_df1 = coefficient_df1.sort_values(by="Coefficient", axis=0, ascending=False)[0:3]
+print(top_three_df1)
+
+###### Print out the bottom 3 positive variables
+bottom_three_df1 = coefficient_df1.sort_values(by="Coefficient", axis=0, ascending=True)[0:3]
+print(bottom_three_df1)
+
+##### Feature Selection to improve the model
+model1 = ExtraTreesClassifier()
+model1.fit(X1,Y1)
+print(model1.feature_importances_) 
+
+##### plot the graph of feature importances 
+figure(figsize=(20,20))
+feat_importances1 = pd.Series(model1.feature_importances_, index=X1.columns)
+feat_importances1.nlargest(50).plot(kind='barh')
+plt.rc('font', size=20)
+plt.xlabel('Feature Importance Score')
+plt.ylabel('Metabolite')
+plt.title('Plot Showing Scores of 50 "Most Important" features for the AD vs CN model')
+plt.show()
+
+feat_importances1
+someimport1 = feat_importances1[feat_importances1!=0]
+someimport1 = someimport1.sort_values(ascending=False)
+someimport1
+
+##### Creating a list of the most important metabolites for AD vs CN
+top50_1 = (someimport1[:50])
+top50_1
+
+ls1 = list(top50_1.index.values)
+ls1;
+
+##### Using the list of metabolites (i.e., column names) to build a new X1 dataframe to be used in the logistic regression model
+X1_2 = X1[ls1]
+X1_2;
+
+##### Splitting the data for the second model
+X_train1_2, X_test1_2, Y_train1_2, Y_test1_2 = train_test_split(X1_2, Y1, random_state=0)
+
+##### Building the classifier
+logclassifier1_2 = LogisticRegression(solver='lbfgs',random_state=0)
+result1_2=logclassifier1_2.fit(X_train1_2, Y_train1_2)
+
+##### Testing the classifier
+predicted_y1_2 = logclassifier1_2.predict(X_test1_2)
+predicted_y1_2
+
+##### Testing the accuracy of the classifier
+print('Accuracy: {:.2f}'.format(logclassifier1_2.score(X_test1_2, Y_test1_2)))
+
+##### Cross Validation testing
+scores_log1_2 = cross_val_score(logclassifier1_2, X1_2, Y1, cv=15)
+print('Cross-Validation Accuracy Scores', scores)
+scores_log1_2 = pd.Series(scores_log1_2)
+scores_log1_2.min(), scores_log1_2.mean(), scores_log1_2.max()
+_Range of accuracy is now between 0.5 and 1.0 but averaging on 0.94_
+
+##### Extracting coefficients of specific metabolites
+
+##### Create a list of original variable names from the training DataFrame
+original_variables1_2 = X1_2.columns
+
+##### Extract the coefficients of the logistic regression estimator
+model_coefficients1_2 = logclassifier1_2.coef_[0]
+
+##### Create a dataframe of the variables and coefficients & print it out
+coefficient_df1_2 = pd.DataFrame({"Metabolite" : original_variables1_2, "Coefficient": model_coefficients1_2})
+print(coefficient_df1_2)
+
+##### Print out the top 3 positive variables
+top_three_df1_2 = coefficient_df1_2.sort_values(by="Coefficient", axis=0, ascending=False)[0:3]
+print(top_three_df1_2)
+
+##### Print out the bottom 3 positive variables
+bottom_three_df1_2 = coefficient_df1_2.sort_values(by="Coefficient", axis=0, ascending=True)[0:3]
+print(bottom_three_df1_2)
+
+#### MCI vs CN
+
 
