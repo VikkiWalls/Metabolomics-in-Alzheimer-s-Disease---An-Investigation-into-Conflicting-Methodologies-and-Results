@@ -1,0 +1,239 @@
+# Data Analysis for Metabolomics in Alzheimer's Disease 
+## Setting up the notebook
+##### Importing required packages
+import math
+import matplotlib as mpl
+import matplotlib.dates as md
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+import missingno as msno
+import networkx as nx
+import numpy as np
+import os
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import re
+import seaborn as sns
+import sklearn as sk
+import statsmodels.api as sm
+import statsmodels.stats.outliers_influence as smo
+import statsmodels.tools.tools as smt
+
+from ipywidgets import Layout, widgets
+from matplotlib.pyplot import figure
+from mpl_toolkits import mplot3d
+from patsy import dmatrices
+from plotly.subplots import make_subplots
+from sklearn import metrics
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA as skPCA
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.feature_selection import chi2
+from sklearn.feature_selection import SelectKBest
+from sklearn.impute import KNNImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
+from statsmodels.formula.api import logit
+from statsmodels.regression.linear_model import OLS
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.tools.tools import add_constant
+from yellowbrick.cluster import KElbowVisualizer
+from yellowbrick.features import PCA
+from yellowbrick.style import set_palette
+
+%config InlineBackend.figure_format='retina'
+%matplotlib inline
+
+plt.style.use('ggplot')
+set_palette('sns_colorblind')
+
+##### Setting seed for reproducibility
+np.random.seed(0)
+
+##### Setting the Working Directory
+os.getcwd()
+os.chdir("")
+
+##### Importing the Alzheimer’s Disease Data ("Identification of Altered Metabolic Pathways in Plasma and CSF in Mild Cognitive Impairment and Alzheimer’s Disease Using Metabolomics" - plasma dataset ST000046)
+_The paper can be found here:_
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3658985/
+
+_The data can be found here:_
+
+https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000046
+_Note that the title of the paper slightly varies between the two links and also when viewed in pdf format, however it has been established that despite the three different titles the paper remains the same._
+
+AllAlzData = pd.read_csv("ADMSPositiveIonModeC18Data (Additional Document 4).csv")
+
+## Data Cleaning and Pre-Processing
+##### Checking the Contents of the Data
+AllAlzData.head()
+
+##### Checking the Dimensions of the Data
+_15 participants in each clinical group plus a column of metabolite names means expectation of 46 columns_
+print(AllAlzData.shape)
+
+##### Setting the Index
+AlzData1 = AllAlzData.set_index("Unnamed: 0", drop = True)
+AlzData1
+
+##### Rotating the Data so that observations (samples) become the rows and features (metabolites) become the columns
+AlzData = AlzData1.transpose()
+AlzData;
+
+##### Checking missing values
+missing_values_count = AlzData.isnull().sum()
+total_cells = np.product(AlzData.shape)
+
+total_missing = missing_values_count.sum()
+percent_missing = (total_missing/total_cells) * 100
+
+print(percent_missing)
+
+##### Visualising missing value locations - by metabolite
+print(AlzData.isnull().sum())
+
+##### Checking Percentage Missing to eliminate any samples/metabolites with >70% missing values as per Lee and Styczynski (2018)
+percent_missing = AlzData.isnull().sum() * 100 / len(AlzData)
+missing_value_df = pd.DataFrame({'percent_missing': percent_missing})
+missing_value_df.sort_values('percent_missing', inplace=True, ascending=False)
+print(missing_value_df)
+
+percent_missing = AlzData1.isnull().sum() * 100 / len(AlzData1)
+missing_value_df = pd.DataFrame({'percent_missing': percent_missing})
+missing_value_df.sort_values('percent_missing', inplace=True, ascending=False)
+print(missing_value_df)
+
+_According to Lee and Styczynski (2018) it is a common standard practice to remove any samples or metabolites with >70% missing values. In this dataset there are no samples or metablites missing values above the 70% threshold with the greatest quantity of missing values being from __sample 17__ and the metabolites __10_12_15-octadecatrienoicacid__ and __D-Glucose__._
+##### Missingno Matrix Plot Visualizing the Sparsity of Data (excluding cognitive status column)
+_Due to the dimensions of the dataset, this Matrix Plot is only readable with the data pre transposing_
+msno.matrix(AlzData.iloc[:,1:].T, fontsize=18)
+gray_patch = mpatches.Patch(color='gray', label='Data Present')
+white_patch = mpatches.Patch(color='white', label='Data Absent')
+plt.legend(fontsize=18, bbox_to_anchor=(1.0, 0.7), borderaxespad=0.2, handles=[gray_patch, white_patch])
+mpl.rcParams["legend.frameon"]=True
+mpl.rcParams["legend.facecolor"]='#C0C0C0'
+plt.title('Matrix Plot Showing Sparsity of Data', fontsize=30)
+mpl.rcParams["axes.titlepad"]=20
+plt.ylabel('Metabolites', fontsize=22)
+plt.xlabel('Samples', fontsize=22)
+plt.show()
+
+##### Building a dendrogram to view relationships of missing values between samples (excluding cognitive status column)
+_(Data also not transposed here for the purposes of visibility and size)_
+msno.dendrogram(AlzData.iloc[0:,1:].T)
+plt.title('Dendrogram showing Relationships of Missing Values Between Samples', fontsize=30)
+mpl.rcParams["axes.titlepad"]=20
+plt.ylabel('Nullity Correlation Level', fontsize=22)
+plt.xlabel('Samples', fontsize=22)
+plt.show()
+
+_The dendrogram does not show any samples linked together below level 6, which suggests that there are no samples which can be classed as 'very similar' and therefore likely to have a significant influence on each other_
+
+### Imputation
+##### Using NS-kNN Imputation _(Lee and Styczynski 2018)_ to resolve missing values
+##### Converting the Data to Numeric
+nAlzData = AlzData.iloc[0:,1:1910].astype(float)
+nAlzData;
+
+##### Separating out Cognitive Status Column to be added back after numeric processing
+CogStat = AlzData.iloc[0:,0:1]
+CogStat;
+
+##### 'Autoscaling' prior to Imputation
+scalar = StandardScaler().fit(nAlzData)
+AlzScSK = scalar.transform(nAlzData)
+AlzScSK = pd.DataFrame(AlzScSK, columns=nAlzData.columns, index=nAlzData.index)
+AlzScSK;
+
+##### KNN Imputation Method
+imputer = KNNImputer(n_neighbors=2)
+After_imputation = imputer.fit_transform(AlzScSK)
+AlzIm = pd.DataFrame(After_imputation, columns=AlzScSK.columns, index=AlzScSK.index)
+AlzIm;
+
+##### Un-scaling and then log transforming the data
+AlzZunSc = scalar.inverse_transform(AlzIm)
+AlzZunSc = pd.DataFrame(AlzZunSc, columns=nAlzData.columns, index=nAlzData.index)
+AlzZ = np.log(AlzZunSc)
+AlzZ;
+
+##### Plot matrix to visualise the data during the various pre-processing stages
+##### Defining plot grids
+fig, axs = plt.subplots(nrows=2, ncols=2)
+fig.tight_layout(h_pad=3)
+fig.suptitle('Plot Matrix Showing Scaling, Processing and Normalizing of Data', fontsize = 30)
+plt.subplots_adjust(top=0.93)
+plt.rcParams['figure.figsize'] = [20, 20]
+
+##### Histogram Creation
+axs[0, 0].hist(nAlzData, edgecolor='black')
+axs[0, 1].hist(AlzScSK, edgecolor='black')
+axs[1, 0].hist(AlzZunSc, edgecolor='black')
+axs[1, 1].hist(AlzZ, edgecolor='black')
+
+##### Assigning Histogram Titles
+axs[0, 0].set_title('Raw Data', fontsize = 20)
+axs[0, 1].set_title('Pre kNN Scaling', fontsize = 20)
+axs[1, 0].set_title('Post kNN UnScaling', fontsize = 20)
+axs[1, 1].set_title('Log-Transformed, Clean Data', fontsize = 20)
+
+AlzZ.insert(0,'Cog_Status', CogStat)
+AlzZ;
+tAlzZ = AlzZ.T
+new_header = tAlzZ.iloc[0]
+tAlzZ = tAlzZ[1:]
+tAlzZ.columns = new_header
+tAlzZ;
+
+##### Encoding the AD, MCI and CN values as labels
+label_encoder = LabelEncoder()
+AlzZ['Cog_Status'] = label_encoder.fit_transform(AlzZ['Cog_Status'])
+
+##### Making a dictionary of metabolites
+metabolites1 = AlzIm.columns.get_level_values('Unnamed: 0')
+cogstats = AlzZ["Cog_Status"].values
+metabolites1
+
+tempnames = list(range(1,1909+1))
+tempnames = [int(d) for d in tempnames]
+tempnamesdict = dict(zip(metabolites1, tempnames))
+
+##### Creating a newly labelled dataset so the metabolite names don't interfere with the code
+AlzZtmp = AlzZ.copy()
+AlzZtmp.columns = AlzZtmp.columns.map(tempnamesdict)
+AlzZtmp.iloc[0:,1:1910];
+AlzZtmp.insert(0,'Cog_Status', CogStat)
+AlzZtmp = AlzZtmp.drop(AlzZtmp.columns[[1]], axis=1)
+AlzZtmp;
+tAlzZtmp = AlzZtmp.T
+
+##### Defining Independent Variables
+ivar = AlzZtmp.iloc[0:,1:1910]
+ivar = ivar
+ivar.head()
+
+tivar = ivar.T
+tivar;
+
+## Exploring the Data
+### Testing for Multicollinearity
+#### Visualising Multicollinearity
+#####Creating a Correlation Matrix
+ivarnmd = AlzZ.iloc[0:,1:1910]
+cor = ivarnmd.corr()
+cor
+
+##### Building a clustermap
+sns.clustermap(cor, cmap="bwr", figsize=(50,50), metric='euclidean', yticklabels=False).ax_col_dendrogram.set_title(
+    'Euclidean Based Clustermap Showing Highly Correlated Metabolites', fontsize=50)
+
+##### Building an interactive network graph to narrow down the information based on the correlation value threshold
+cog = tAlzZ.columns.get_level_values('Cog_Status')
