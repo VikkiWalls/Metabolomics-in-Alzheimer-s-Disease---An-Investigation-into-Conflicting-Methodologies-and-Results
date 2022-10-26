@@ -237,3 +237,406 @@ sns.clustermap(cor, cmap="bwr", figsize=(50,50), metric='euclidean', yticklabels
 
 ##### Building an interactive network graph to narrow down the information based on the correlation value threshold
 cog = tAlzZ.columns.get_level_values('Cog_Status')
+colormapMCLN = {
+    'AD': '#949494',  ##### Colourblind friendly grey
+    'CN': '#0173b2',  ##### Colourblind friendly blue
+    'MCI': '#cc78bc',  ##### Colourblind friendly pink
+}
+colorlistMCLN = [colormapMCLN[c] for c in tAlzZ.columns.get_level_values('Cog_Status')]
+threshold_choice = widgets.FloatSlider(description="Correlation Threshold", value=0.8, min=0.1, max=1, step=0.05, 
+                                    continuous_update=False, orientation='horizontal', layout=Layout(width='500px'), 
+                                    style=dict(description_width= 'initial'))
+
+network = go.FigureWidget(data=[go.Scatter(x=[], y=[], mode='lines', text=[],  line=dict(color='#cc78bc', width=2.5), 
+                                    marker=dict(size=16, line_width=5,line=dict(color='#cc78bc',width=2))),
+                                    go.Scatter(x=[], y=[],mode='markers+text', textposition="top center", text=[], 
+                                    hoverinfo='text',textfont_size=12, marker=dict(size=10, color=[],line_width=1))],
+                                    layout=go.Layout(showlegend=False, annotations=[], margin=dict(t=40, b=0, l=0, r=0), 
+                                    width=950, height=800, title='Network Graph Showing Correlated Metabolites at Adjustable Correlation Thresholds')) 
+                          
+df = AlzZ.copy()
+correlation_matrix = cor.to_numpy()
+
+def plot_corr_graph(change):
+
+    threshold, corr_mode = None, None
+    threshold = change.new
+    
+    tr_ind = np.triu_indices(correlation_matrix.shape[0])
+    correlation_matrix[tr_ind] = 0
+    G = nx.from_numpy_matrix(correlation_matrix)
+    G = nx.relabel_nodes(G, lambda x: df.columns.tolist()[x])
+    
+    remove = []
+    
+    for col1, col2, weight in G.edges(data=True):
+      if math.isnan(weight["weight"]):
+        remove.append((col1,col2))
+    
+      if abs(weight["weight"]) < threshold:
+        remove.append((col1,col2))
+    
+    G.remove_edges_from(remove)
+    
+    remove = []
+    edges = list(sum(G.edges, ()))
+    
+    for node in G.nodes:
+      if node not in edges:
+        remove.append(node)
+    G.remove_nodes_from(remove)
+    mst = nx.maximum_spanning_tree(G)
+    
+    def assign_color(col):
+      return colorlistMCLN
+
+    def assign_color_edge(correlation):
+      if correlation < 0:
+        return "#BF0603"
+      else:
+        return "#00CC66"
+    edge_colors = []
+    node_colors = []
+    for key, value in nx.get_edge_attributes(mst, 'weight').items():
+        edge_colors.append(assign_color_edge(value))
+    for key, value in dict(mst.degree).items():
+        node_colors.append(assign_color(key))
+      
+    labels = {n:n for n in mst.nodes()}
+    node_x = []
+    node_y = []
+    
+    tree = nx.fruchterman_reingold_layout(mst, k=0.25).items()
+    
+    for node, (x_,y_) in tree:
+        node_x.append(x_)
+        node_y.append(y_)
+        
+    def get_dim_of_node(name):
+        for node, (x,y) in tree:
+            if node == name:
+                return x,y
+        
+    edge_x = []
+    edge_y = []
+    
+    weights= []
+    for node1, node2, w in mst.edges(data=True):
+        x0, y0 = get_dim_of_node(node1)
+        x1, y1 =  get_dim_of_node(node2)
+        edge_x.append(x0)
+        edge_x.append(x1)
+        edge_x.append(None)
+        edge_y.append(y0)
+        edge_y.append(y1)
+        edge_y.append(None)
+        weights.append((round(w["weight"],1), (x0+x1)/2, (y0+y1)/2))
+                              
+    with network.batch_update():
+        network.data[1].x = node_x
+        network.data[1].y = node_y
+        network.data[1].text = list(labels)
+        network.data[1].marker.color = node_colors
+                          
+        network.data[0].x = edge_x
+        network.data[0].y = edge_y
+        network.data[0].text = list(weights)
+        network.update_layout(xaxis_zeroline=False, yaxis_zeroline=False, xaxis_showgrid=False, yaxis_showgrid=False, 
+                              plot_bgcolor='rgba(0,0,0,0)')
+
+threshold_choice.observe(plot_corr_graph, names="value")
+widgets.VBox([threshold_choice, network])
+
+_Recommended threshold 0.95_
+
+#### Variance Inflation Factor (VIF) test
+_Low to zero levels means this data would be a suitable candidate for Logistic Regression a method recommended by Lee and Hu (2019) and matching studies by Proitsi et al (2016) and Trushina et al (2013)_
+
+##### Adding a constant
+ivarc = smt.add_constant(data=ivarnmd, prepend=False)
+
+##### Calculating VIF for each feature
+vif_info = pd.DataFrame()
+vif_info['VIF'] = [variance_inflation_factor(ivarnmd.values, i) for i in range(ivarnmd.shape[1])]
+vif_info['Column'] = ivarnmd.columns
+vif_info.sort_values('VIF', ascending=False)
+
+### Principal Component Analysis (PCA)
+__PCA analysis should only include the features (i.e. metabolites) category labels (such as Cognitive Status) are not included in the analysis - however they can be used to colour code visualisations.__
+
+##### Using the Sklearn package to perform the PCA so that we can extract numerical attributes of the model
+skpca = skPCA(n_components=45, random_state = 2020)
+skpca.fit(ivar)
+skAlzZpca = skpca.transform(ivar)
+
+##### Using Yellowbrick to perform PCA to produce a visualisation of the components by cognitive type
+_It is clear that there are no separate clusters between the cognitive types - this matches other metabolomics for AD studies_
+AlzZpcavs = PCA(random_state = 2020, 
+                classes = ['AD','CN','MCI'], colors=['#949494', '#0173b2', '#cc78bc'])
+AlzZpcavs.fit_transform(ivar, AlzZ.Cog_Status)
+AlzZpcavs.show()
+
+##### Checking that the percentage variance of the data is completely explained by all of the principal components
+print("Variance explained by all 45 principle components =", 
+     sum(skpca.explained_variance_ratio_*100))
+
+##### Checking total variance explained by each of the selected components
+np.cumsum(skpca.explained_variance_ratio_*100)
+
+##### Visualising the explained variance by principal component using and elbow plot
+plt.plot(np.cumsum(skpca.explained_variance_ratio_*100))
+plt.xlabel('Number of Components')
+plt.ylabel('Explained Varience')
+plt.title('Elbow Plot Showing the Optimum Number of Principle Components by Explained Variance')
+plt.savefig('elbowplot.png', dpi=100)
+
+##### Checking numerical values of explained variance by principal component
+_A large number of principle components (40 of 45) are still needed to explain 95% of the variance)_
+print("Varience explained by the First principle component =",
+      np.cumsum(skpca.explained_variance_ratio_*100)[0])
+
+print("Varience explained by the First 10 principle components =",
+      np.cumsum(skpca.explained_variance_ratio_*100)[9])
+
+print("Varience explained by the First 30 principle components =",
+      np.cumsum(skpca.explained_variance_ratio_*100)[29])
+
+print("Varience explained by the First 40 principle components =",
+      np.cumsum(skpca.explained_variance_ratio_*100)[39])
+
+##### Selection of 95% variance principal components
+skpca_95 = skPCA(n_components=0.95, random_state = 2020)
+skpca_95.fit(ivar)
+skAlzZpca_95 = skpca_95.transform(ivar)
+skAlzZpca_95.shape
+
+##### Visualisation of the newly transformed data
+plt.figure(figsize=(10, 7))
+plt.plot(skAlzZpca_95)
+plt.xlabel('Observation')
+plt.ylabel('Transformed Data')
+plt.title('Transformed data by the principle components (95% Variability)', 
+         pad = 15)
+plt.savefig('plt.png')
+
+##### Creating a new dataframe of the 95% variance explained principal components
+b = 40
+a = range(1, b + 1)
+pcCol = ["PC" + str(i) for i in a]
+pcadf = pd.DataFrame(skAlzZpca_95, columns = pcCol)
+pcadf['label'] = AlzZ.Cog_Status
+pcadf.head()
+
+##### Saving the new dataframe to a csv
+pcadf = pcadf.iloc[0:,0:40]
+pcadf.insert(0,'Cog Status', CogStat)
+pcadf;
+pcadf.to_csv('AD_95.csv', index=False)
+tpcadf = pcadf.T
+tpcadf;
+new_header = tpcadf.iloc[0]
+tpcadf = tpcadf[1:]
+tpcadf.columns = CogStat
+tpcadf;
+
+### Partial Least Squares
+#### Alzheimer's Disease against Cognitive Normal
+##### Defining a dataset of specifically AD and CN data (Using the PCA 95% dataframe)
+ADvsCN = tpcadf.iloc[1:,0:30]
+ADvsCN;
+
+##### Visually comparing the components by cognitive type
+ADvsCN.columns.get_level_values(0)
+
+##### building a dictionary
+colormap = {
+    ('AD',): '#949494',  ##### Colourblind friendly grey
+    ('CN',): '#0173b2',  ##### Colourblind friendly blue
+}
+colorlist = [colormap[c] for c in ADvsCN.columns.get_level_values(0)]
+
+ADCNfig = ADvsCN.plot(kind='line', legend=False, figsize=(12,4), color=colorlist, title='Comparing AD Metabolite Data against CN Data')
+plt.xlabel('Principal Components')
+plt.ylabel('Metabolite Concentrations (ppm)')
+ADCNfig.xaxis.set_major_formatter(plt.NullFormatter())
+plt.xticks(np.arange(0, 50, 50))
+greydot = mpatches.Patch(color='#949494', label='AD')
+bluedot = mpatches.Patch(color='#0173b2', label='CN')
+plt.legend(fontsize=12, bbox_to_anchor=(1.0, 1.005), borderaxespad=0.2, handles=[greydot, bluedot])
+_There does not seem to be any visually obvious outliers between the two groups although there are clear points on the right side of the plot where the CN data spikes higher._
+
+##### Creating a pseudolinear Y value (using AD) against which to correlate the samples
+y = [g == ('CN',) for g in ADvsCN.columns.get_level_values(0)]
+y;
+
+##### Conversion of boolean values to numerical
+y = np.array(y, dtype=int)
+y
+
+##### Apply fitting a PLS-DA model to the data
+from sklearn.cross_decomposition import PLSRegression
+plsr = PLSRegression(n_components=2, scale=False)
+plsr.fit(ADvsCN.values.T, y)
+
+##### Viewing the model scores and building a dataframe to be used for plotting
+##### (Scores describe the position of each sample in each determined latent variable (LV))
+plsr.x_scores_;
+plsr.x_weights_.shape
+scores = pd.DataFrame(plsr.x_scores_)
+scores.index=ADvsCN.columns
+scores;
+
+##### Making a separate version of the scores dataframe which can be rounded to two significant figures for labelling the points without interfering in the plotting locations
+scorelab = scores.round(decimals = 2)
+scorelab;
+
+##### Plotting the PLS Regression scores
+ax = scores.plot(x=0, y=1, kind='scatter', s=50, alpha=0.7,
+                    c=colorlist, figsize=(6,6))
+ax.set_xlabel('Scores on LV 1')
+ax.set_ylabel('Scores on LV 2')
+ax.set_title('PLS Scores of AD versus CN Metabolite Data')
+
+greydot = mpatches.Patch(color='#949494', label='AD')
+bluedot = mpatches.Patch(color='#0173b2', label='CN')
+plt.legend(fontsize=12, bbox_to_anchor=(1.2, 1.005), borderaxespad=0.2, handles=[greydot, bluedot])
+
+for n, (x, y) in enumerate(scores.values):
+    label = scorelab.values[n][0]
+    ax.text(x,y,label)
+_There is separation between AD and CN values on Latent Variable 1_
+
+#### Mild Cognitive Impairment against Cognitive Normal
+##### Defining a dataset of specifically MCI and CN data (Using the PCA 95% dataframe)
+MCIvsCN = tpcadf.iloc[0:,15:]
+MCIvsCN;
+
+##### Visually comparing the components by cognitive type
+MCIvsCN.columns.get_level_values(0)
+
+#####building a dictionary
+colormap2 = {
+    ('MCI',): '#cc78bc',  ##### Colourblind friendly pink
+    ('CN',): '#0173b2',  ##### Colourblind friendly blue
+}
+colorlist2 = [colormap2[c] for c in MCIvsCN.columns.get_level_values(0)]
+
+MCICNfig = MCIvsCN.plot(kind='line', legend=False, figsize=(12,4), color=colorlist2, title='Comparing MCI Metabolite Data against CN Data')
+plt.xlabel('Principal Components')
+plt.ylabel('Metabolite Concentrations (ppm)')
+MCICNfig.xaxis.set_major_formatter(plt.NullFormatter())
+plt.xticks(np.arange(0, 50, 50))
+pinkdot = mpatches.Patch(color='#cc78bc', label='MCI')
+bluedot = mpatches.Patch(color='#0173b2', label='CN')
+plt.legend(fontsize=12, bbox_to_anchor=(1.0, 1.005), borderaxespad=0.2, handles=[pinkdot, bluedot])
+_There seems to be potential outliers in the CN data which can be seen by the large blue spike on the left hand side of the plot and the two blue spikes on the right hand side of the plot._
+
+##### Creating a pseudolinear Y value (using AD) against which to correlate the samples
+y2 = [g == ('CN',) for g in MCIvsCN.columns.get_level_values(0)]
+y2;
+
+##### Conversion of boolean values to numerical
+y2 = np.array(y2, dtype=int)
+y2
+
+##### Apply fitting a PLS-DA model to the data
+from sklearn.cross_decomposition import PLSRegression
+plsr = PLSRegression(n_components=2, scale=False)
+plsr.fit(MCIvsCN.values.T, y)
+
+##### Viewing the model scores and building a dataframe to be used for plotting
+plsr2.x_scores_;
+plsr2.x_weights_.shape
+scores2 = pd.DataFrame(plsr2.x_scores_)
+scores2.index=MCIvsCN.columns
+scores2;
+
+##### Making a separate version of the scores dataframe which can be rounded to two significant figures for labelling the points without interfering in the plotting locations
+score2lab = scores2.round(decimals = 2)
+score2lab;
+
+##### Plotting the PLS Regression scores
+ax = scores2.plot(x=0, y=1, kind='scatter', s=50, alpha=0.7,
+                    c=colorlist2, figsize=(6,6))
+ax.set_xlabel('Scores on LV 1')
+ax.set_ylabel('Scores on LV 2')
+ax.set_title('PLS Scores of MCI versus CN Metabolite Data')
+
+pinkdot = mpatches.Patch(color='#cc78bc', label='MCI')
+bluedot = mpatches.Patch(color='#0173b2', label='CN')
+plt.legend(fontsize=12, bbox_to_anchor=(1.21, 1.005), borderaxespad=0.2, handles=[pinkdot, bluedot])
+
+for n, (x, y) in enumerate(scores2.values):
+    label = score2lab.values[n][0]
+    ax.text(x,y,label)
+_There appears to be separation between MCI and CN values on Latent Variable 1_
+
+#### Alzheimer's Disease against Mild Cognitive Impairment
+##### Defining a dataset of specifically AD and MCI data (Using the PCA 95% dataframe)
+AD = tpcadf.iloc[0:,0:15]
+AD;
+MCI = tpcadf.iloc[0:,30:]
+MCI;
+ADvsMCI = AD.join(MCI)
+ADvsMCI;
+
+##### Visually comparing the components by cognitive type
+ADvsMCI.columns.get_level_values(0)
+
+##### building a dictionary
+colormap3 = {
+    ('MCI',): '#cc78bc',  ##### Colourblind friendly pink
+    ('AD',): '#949494',  ##### Colourblind friendly grey
+}
+
+colorlist3 = [colormap3[c] for c in ADvsMCI.columns.get_level_values(0)]
+
+MCIADfig = ADvsMCI.plot(kind='line', legend=False, figsize=(12,4), color=colorlist3, title='Comparing MCI Metabolite Data against AD Data')
+plt.xlabel('Principal Components')
+plt.ylabel('Metabolite Concentrations (ppm)')
+MCIADfig.xaxis.set_major_formatter(plt.NullFormatter())
+plt.xticks(np.arange(0, 50, 50))
+pinkdot = mpatches.Patch(color='#cc78bc', label='MCI')
+greydot = mpatches.Patch(color='#949494', label='AD')
+plt.legend(fontsize=12, bbox_to_anchor=(1.0, 1.005), borderaxespad=0.2, handles=[pinkdot, greydot])
+_There does appear to be some potential outliers in the AD data on the left side of the plot where the grey spikes higher._
+
+##### Creating a pseudolinear y value (using AD) against which to correlate the samples
+y3 = [g == ('AD',) for g in ADvsMCI.columns.get_level_values(0)]
+y3;
+
+##### Conversion of boolean values to numerical
+y3 = np.array(y3, dtype=int)
+y3
+
+##### Apply fitting a PLS-DA model to the data
+plsr3 = PLSRegression(n_components=2, scale=False)
+plsr3.fit(ADvsMCI.values.T, y3)
+
+##### Viewing the model scores and building a dataframe to be used for plotting
+plsr3.x_scores_;
+plsr3.x_weights_.shape
+scores3 = pd.DataFrame(plsr3.x_scores_)
+scores3.index=ADvsMCI.columns
+scores3;
+
+##### Making a separate version of the scores dataframe which can be rounded to two significant figures for labelling the points without interfering in the plotting locations
+score3lab = scores3.round(decimals = 2)
+score3lab;
+
+##### Plotting the PLS Regression scores
+ax = scores3.plot(x=0, y=1, kind='scatter', s=50, alpha=0.7,
+                    c=colorlist3, figsize=(6,6))
+ax.set_xlabel('Scores on LV 1')
+ax.set_ylabel('Scores on LV 2')
+ax.set_title('PLS Scores of MCI versus AD Metabolite Data')
+
+pinkdot = mpatches.Patch(color='#cc78bc', label='MCI')
+greydot = mpatches.Patch(color='#949494', label='AD')
+plt.legend(fontsize=12, bbox_to_anchor=(1.21, 1.005), borderaxespad=0.2, handles=[pinkdot, greydot])
+
+for n, (x, y) in enumerate(scores3.values):
+    label = score3lab.values[n][0]
+    ax.text(x,y,label)
+_There appears to be significant separation between MCI and AD values on Latent Variable 1_
+
